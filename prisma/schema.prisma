@@ -19,12 +19,31 @@ model User {
 }
 
 model StudentProfile {
-  id             Int    @id @default(autoincrement())
-  userId         Int    @unique
-  name           String
-  school         String
-  graduationYear Int
-  bio            String @default("")
+  id              Int    @id @default(autoincrement())
+  userId          Int    @unique
+  name            String
+  school          String
+  graduationYear  Int
+  graduationMonth Int    @default(3)
+  bio             String @default("")
+
+  // 任意項目
+  educationType   String? // 高校 / 専門学校 / 短大 / 大学 / 大学院 / その他
+  faculty         String? // 学部・学科
+  location        String? // 居住地
+  selfPr          String? // 自己PR
+  gakuchika       String? // ガクチカ
+  desiredIndustry String? // 志望業界
+  desiredJob      String? // 志望職種
+  desiredLocation String? // 希望勤務地
+  skills          String? // スキル
+  qualifications  String? // 資格
+  internship      String? // インターン経験
+  portfolioUrl    String? // ポートフォリオURL
+  githubUrl       String? // GitHub
+  linkedinUrl     String? // LinkedIn
+  photoUrl        String? // 証明写真URL (base64)
+  resumeUrl       String? // レジュメURL (base64)
 
   user         User          @relation(fields: [userId], references: [id])
   applications Application[]

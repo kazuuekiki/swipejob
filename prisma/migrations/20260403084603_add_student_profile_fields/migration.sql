@@ -1,0 +1,18 @@
+-- AlterTable
+ALTER TABLE "StudentProfile" ADD COLUMN     "desiredIndustry" TEXT,
+ADD COLUMN     "desiredJob" TEXT,
+ADD COLUMN     "desiredLocation" TEXT,
+ADD COLUMN     "educationType" TEXT,
+ADD COLUMN     "faculty" TEXT,
+ADD COLUMN     "gakuchika" TEXT,
+ADD COLUMN     "githubUrl" TEXT,
+ADD COLUMN     "graduationMonth" INTEGER NOT NULL DEFAULT 3,
+ADD COLUMN     "internship" TEXT,
+ADD COLUMN     "linkedinUrl" TEXT,
+ADD COLUMN     "location" TEXT,
+ADD COLUMN     "photoUrl" TEXT,
+ADD COLUMN     "portfolioUrl" TEXT,
+ADD COLUMN     "qualifications" TEXT,
+ADD COLUMN     "resumeUrl" TEXT,
+ADD COLUMN     "selfPr" TEXT,
+ADD COLUMN     "skills" TEXT;

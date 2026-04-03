@@ -26,6 +26,7 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
   const [dragging, setDragging] = useState(false);
   const [dragX, setDragX] = useState(0);
   const startX = useRef(0);
+  const hasDragged = useRef(false);
   const router = useRouter();
 
   const current = companies[index];
@@ -42,12 +43,15 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
 
   const handleDragStart = (clientX: number) => {
     startX.current = clientX;
+    hasDragged.current = false;
     setDragging(true);
   };
 
   const handleDragMove = (clientX: number) => {
     if (!dragging) return;
-    setDragX(clientX - startX.current);
+    const dx = clientX - startX.current;
+    if (Math.abs(dx) > 5) hasDragged.current = true;
+    setDragX(dx);
   };
 
   const handleDragEnd = () => {
@@ -57,6 +61,8 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
       triggerSwipe("like");
     } else if (dragX < -80) {
       triggerSwipe("skip");
+    } else if (!hasDragged.current) {
+      router.push(`/companies/${current.id}`);
     }
     setDragX(0);
   };
@@ -77,7 +83,7 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
     <div className="flex flex-col items-center select-none">
       {/* Card */}
       <div
-        className="relative w-full max-w-sm cursor-grab active:cursor-grabbing"
+        className="relative w-full max-w-sm cursor-pointer active:cursor-grabbing"
         style={{
           transform: `translateX(${dragX}px) rotate(${rotation})`,
           opacity,
@@ -145,6 +151,7 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
                 </span>
               )}
             </div>
+            <p className="text-[10px] text-gray-300 text-center mt-3">タップして詳細を見る</p>
           </div>
         </div>
       </div>
@@ -155,19 +162,12 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
       </p>
 
       {/* Buttons */}
-      <div className="flex items-center gap-6 mt-3">
+      <div className="flex items-center gap-10 mt-3">
         <button
           onClick={() => triggerSwipe("skip")}
           className="w-14 h-14 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center hover:scale-105 active:scale-95 transition"
         >
           <X className="w-6 h-6 text-red-400" />
-        </button>
-
-        <button
-          onClick={() => router.push(`/companies/${current.id}`)}
-          className="w-10 h-10 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center hover:scale-105 active:scale-95 transition text-[10px] font-bold text-gray-400"
-        >
-          詳細
         </button>
 
         <button

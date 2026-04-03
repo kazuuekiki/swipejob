@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Heart, Send, MessageCircle } from "lucide-react";
+import { Home, Heart, Send, MessageCircle, User } from "lucide-react";
 
 export default function NavBar() {
   const pathname = usePathname();
@@ -11,6 +11,7 @@ export default function NavBar() {
     { href: "/student/favorites", icon: Heart, label: "気になる" },
     { href: "/student/applications", icon: Send, label: "応募履歴" },
     { href: "/student/matches", icon: MessageCircle, label: "メッセージ" },
+    { href: "/student/profile", icon: User, label: "設定" },
   ];
 
   return (
@@ -22,7 +23,7 @@ export default function NavBar() {
             <Link
               key={tab.href}
               href={tab.href}
-              className={`flex flex-col items-center gap-0.5 px-2 py-1 ${
+              className={`flex flex-col items-center gap-0.5 px-1 py-1 ${
                 isActive ? "text-indigo-600" : "text-gray-400"
               }`}
             >
