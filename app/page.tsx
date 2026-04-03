@@ -73,14 +73,7 @@ export default function HomePage() {
   return (
     <>
       <main className="pb-16 min-h-screen">
-        <div className="px-4 pt-2 pb-2">
-          {remaining !== null && (
-            <div className="text-center mb-1">
-              <span className="text-[11px] text-gray-400">
-                残り <span className="font-bold text-indigo-600">{remaining}</span> 件応募可
-              </span>
-            </div>
-          )}
+        <div className="px-4 pt-1 pb-0 h-[calc(100vh-56px)]">
           {loading ? (
             <div className="flex items-center justify-center h-80">
               <div className="w-10 h-10 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin" />
