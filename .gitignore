@@ -44,3 +44,6 @@ next-env.d.ts
 dev.db
 dev.db-journal
 .claude/
+
+.vercel
+.env*.local
