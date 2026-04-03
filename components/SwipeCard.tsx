@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Heart, X, Info } from "lucide-react";
+import { Heart, X } from "lucide-react";
 
 interface Company {
   id: number;
@@ -165,9 +165,9 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
 
         <button
           onClick={() => router.push(`/companies/${current.id}`)}
-          className="w-12 h-12 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center hover:scale-105 active:scale-95 transition"
+          className="w-12 h-12 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center hover:scale-105 active:scale-95 transition text-[11px] font-bold text-gray-400"
         >
-          <Info className="w-5 h-5 text-gray-400" />
+          詳細
         </button>
 
         <button
