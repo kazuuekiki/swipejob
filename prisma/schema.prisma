@@ -22,6 +22,7 @@ model StudentProfile {
   id              Int    @id @default(autoincrement())
   userId          Int    @unique
   name            String
+  birthDate       String? // YYYY-MM-DD
   school          String
   graduationYear  Int
   graduationMonth Int    @default(3)

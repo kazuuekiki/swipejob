@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 interface Profile {
   name: string;
+  birthDate: string | null;
   school: string;
   graduationYear: number;
   graduationMonth: number;
@@ -134,36 +135,25 @@ export default function StudentProfilePage() {
             <p className="text-[10px] text-gray-400 mt-1">証明写真をアップロード</p>
           </div>
 
-          {/* 必須項目 */}
+          {/* 基本情報 */}
           <Section title="基本情報（必須）">
             <Field label="氏名" value={profile.name} onChange={(v) => handleChange("name", v)} required />
-            <Field label="学校名" value={profile.school} onChange={(v) => handleChange("school", v)} required />
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="text-xs text-gray-500 mb-1 block">卒業予定年</label>
-                <select
-                  value={profile.graduationYear}
-                  onChange={(e) => handleChange("graduationYear", Number(e.target.value))}
-                  className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm bg-white text-gray-800"
-                >
-                  {YEARS.map((y) => <option key={y} value={y}>{y}年</option>)}
-                </select>
-              </div>
-              <div>
-                <label className="text-xs text-gray-500 mb-1 block">卒業予定月</label>
-                <select
-                  value={profile.graduationMonth}
-                  onChange={(e) => handleChange("graduationMonth", Number(e.target.value))}
-                  className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm bg-white text-gray-800"
-                >
-                  {MONTHS.map((m) => <option key={m} value={m}>{m}月</option>)}
-                </select>
-              </div>
+            <div>
+              <label className="text-xs text-gray-500 mb-1 block">
+                生年月日 <span className="text-red-400">*</span>
+              </label>
+              <input
+                type="date"
+                value={profile.birthDate || ""}
+                onChange={(e) => handleChange("birthDate", e.target.value || null)}
+                className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm bg-white text-gray-800"
+              />
             </div>
           </Section>
 
           {/* 学歴 */}
           <Section title="学歴">
+            <Field label="学校名（最終卒業または在学中）" value={profile.school} onChange={(v) => handleChange("school", v)} required />
             <div>
               <label className="text-xs text-gray-500 mb-1 block">学歴区分</label>
               <select
@@ -176,6 +166,27 @@ export default function StudentProfilePage() {
               </select>
             </div>
             <Field label="学部・学科" value={profile.faculty || ""} onChange={(v) => handleChange("faculty", v || null)} />
+            <div>
+              <label className="text-xs text-gray-500 mb-1 block">
+                卒業年月（在学中の方は予定年月） <span className="text-red-400">*</span>
+              </label>
+              <div className="grid grid-cols-2 gap-3">
+                <select
+                  value={profile.graduationYear}
+                  onChange={(e) => handleChange("graduationYear", Number(e.target.value))}
+                  className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm bg-white text-gray-800"
+                >
+                  {YEARS.map((y) => <option key={y} value={y}>{y}年</option>)}
+                </select>
+                <select
+                  value={profile.graduationMonth}
+                  onChange={(e) => handleChange("graduationMonth", Number(e.target.value))}
+                  className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm bg-white text-gray-800"
+                >
+                  {MONTHS.map((m) => <option key={m} value={m}>{m}月</option>)}
+                </select>
+              </div>
+            </div>
           </Section>
 
           {/* 自己紹介 */}

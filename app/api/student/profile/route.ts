@@ -20,11 +20,10 @@ export async function PATCH(req: NextRequest) {
 
   // Only allow updating these fields
   const allowed = [
-    "name", "school", "graduationYear", "graduationMonth",
+    "name", "birthDate", "school", "graduationYear", "graduationMonth",
     "educationType", "faculty", "location", "bio", "selfPr",
-    "gakuchika", "desiredIndustry", "desiredJob", "desiredLocation",
+    "desiredIndustry", "desiredJob", "desiredLocation",
     "skills", "qualifications", "internship",
-    "portfolioUrl", "githubUrl", "linkedinUrl",
     "photoUrl", "resumeUrl",
   ];
 
