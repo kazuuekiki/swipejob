@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  role      String   // "student" | "company"
+  createdAt DateTime @default(now())
+
+  studentProfile StudentProfile?
+  company        Company?
+}
+
+model StudentProfile {
+  id             Int    @id @default(autoincrement())
+  userId         Int    @unique
+  name           String
+  school         String
+  graduationYear Int
+  bio            String @default("")
+
+  user         User          @relation(fields: [userId], references: [id])
+  applications Application[]
+  favorites    Favorite[]
+  swipes       Swipe[]
+}
+
+model Company {
+  id          Int    @id @default(autoincrement())
+  userId      Int    @unique
+  companyName String
+  email       String @unique
+
+  user         User            @relation(fields: [userId], references: [id])
+  profile      CompanyProfile?
+  applications Application[]
+  favorites    Favorite[]
+
+  createdAt DateTime @default(now())
+}
+
+model CompanyProfile {
+  id            Int    @id @default(autoincrement())
+  companyId     Int    @unique
+  description   String @default("")
+  industry      String @default("")
+  location      String @default("")
+  employeeCount String @default("")
+  salary        String @default("")
+  catchphrase   String @default("")
+  foundedYear   String @default("")
+  workStyle     String @default("")
+  logoColor     String @default("#6366f1")
+
+  company Company @relation(fields: [companyId], references: [id])
+}
+
+model Application {
+  id        Int      @id @default(autoincrement())
+  studentId Int
+  companyId Int
+  message   String   @default("")
+  status    String   @default("applied") // applied | reviewing | matched | rejected
+  createdAt DateTime @default(now())
+
+  student StudentProfile @relation(fields: [studentId], references: [id])
+  company Company        @relation(fields: [companyId], references: [id])
+  match   Match?
+
+  @@unique([studentId, companyId])
+}
+
+model Match {
+  id            Int      @id @default(autoincrement())
+  studentId     Int
+  companyId     Int
+  applicationId Int      @unique
+  createdAt     DateTime @default(now())
+
+  application Application @relation(fields: [applicationId], references: [id])
+  messages    Message[]
+
+  @@unique([studentId, companyId])
+}
+
+model Message {
+  id         Int      @id @default(autoincrement())
+  matchId    Int
+  senderId   Int
+  senderRole String   // "student" | "company"
+  body       String
+  createdAt  DateTime @default(now())
+
+  match Match @relation(fields: [matchId], references: [id])
+}
+
+model Swipe {
+  id        Int      @id @default(autoincrement())
+  studentId Int
+  companyId Int
+  action    String   // "like" | "skip"
+  createdAt DateTime @default(now())
+
+  student StudentProfile @relation(fields: [studentId], references: [id])
+
+  @@unique([studentId, companyId])
+}
+
+model Favorite {
+  id        Int      @id @default(autoincrement())
+  studentId Int
+  companyId Int
+  createdAt DateTime @default(now())
+
+  student StudentProfile @relation(fields: [studentId], references: [id])
+  company Company        @relation(fields: [companyId], references: [id])
+
+  @@unique([studentId, companyId])
+}
