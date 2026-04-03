@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import NavBar from "@/components/NavBar";
 import SwipeCard from "@/components/SwipeCard";
-import Link from "next/link";
 
 interface Company {
   id: number;
@@ -28,7 +27,6 @@ export default function HomePage() {
       .then((r) => r.json())
       .then((all: Company[]) => {
         const swiped = getSwiped();
-        // If all companies have been swiped, reset
         if (swiped.length >= all.length) {
           clearSwiped();
           setCompanies(all);
@@ -74,9 +72,8 @@ export default function HomePage() {
 
   return (
     <>
-      <NavBar />
-      <main className="pt-14 min-h-screen">
-        <div className="px-4 py-2">
+      <main className="pb-16 min-h-screen">
+        <div className="px-4 pt-2 pb-2">
           {remaining !== null && (
             <div className="text-center mb-1">
               <span className="text-[11px] text-gray-400">
@@ -92,23 +89,11 @@ export default function HomePage() {
             <SwipeCard companies={companies} onSwipe={handleSwipe} />
           )}
         </div>
-
-        {/* Quick nav */}
-        <div className="px-4 pb-8">
-          <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-center">
-            <p className="text-sm font-semibold text-gray-700 mb-3">各ページへ移動</p>
-            <div className="flex flex-wrap gap-2 justify-center">
-              <Link href="/student/applications" className="bg-indigo-600 text-white px-4 py-2 rounded-full text-sm font-semibold">応募履歴</Link>
-              <Link href="/student/matches" className="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold">マッチ</Link>
-              <Link href="/company/applications" className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold">企業：応募一覧</Link>
-              <Link href="/company/profile" className="border border-gray-300 text-gray-700 px-4 py-2 rounded-full text-sm font-semibold">企業：プロフィール</Link>
-            </div>
-          </div>
-        </div>
       </main>
+      <NavBar />
 
       {toast && (
-        <div className={`fixed bottom-6 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full text-white text-sm font-medium shadow-lg z-50 ${toast.type === "error" ? "bg-red-500" : "bg-green-500"}`}>
+        <div className={`fixed bottom-20 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full text-white text-sm font-medium shadow-lg z-50 ${toast.type === "error" ? "bg-red-500" : "bg-green-500"}`}>
           {toast.message}
         </div>
       )}

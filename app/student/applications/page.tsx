@@ -33,8 +33,7 @@ export default function ApplicationsPage() {
 
   return (
     <>
-      <NavBar />
-      <main className="pt-14 max-w-md mx-auto px-4 py-6">
+      <main className="pb-16 max-w-md mx-auto px-4 py-6">
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-xl font-black text-gray-800">応募履歴</h1>
           {remaining !== null && (
@@ -75,6 +74,7 @@ export default function ApplicationsPage() {
           </div>
         )}
       </main>
+      <NavBar />
     </>
   );
 }

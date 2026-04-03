@@ -94,7 +94,7 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
         <div className="rounded-3xl overflow-hidden shadow-2xl bg-white">
           {/* Logo area */}
           <div
-            className="h-32 flex items-center justify-center text-white text-5xl font-bold relative"
+            className="h-44 flex items-center justify-center text-white text-6xl font-bold relative"
             style={{ backgroundColor: logoColor }}
           >
             <span className="drop-shadow-lg">

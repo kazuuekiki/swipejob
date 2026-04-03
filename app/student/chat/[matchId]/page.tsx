@@ -51,8 +51,7 @@ export default function StudentChatPage() {
 
   return (
     <>
-      <NavBar />
-      <div className="pt-14 flex flex-col h-screen max-w-md mx-auto">
+      <div className="flex flex-col h-screen max-w-md mx-auto">
         {/* Header */}
         <div className="bg-white border-b border-gray-100 px-4 py-3 flex items-center gap-3">
           <button onClick={() => router.back()}>

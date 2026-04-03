@@ -26,8 +26,7 @@ export default function MatchesPage() {
 
   return (
     <>
-      <NavBar />
-      <main className="pt-14 max-w-md mx-auto px-4 py-6">
+      <main className="pb-16 max-w-md mx-auto px-4 py-6">
         <h1 className="text-xl font-black text-gray-800 mb-4">マッチした企業</h1>
         {matches.length === 0 ? (
           <div className="text-center py-16 text-gray-400">
@@ -65,6 +64,7 @@ export default function MatchesPage() {
           </div>
         )}
       </main>
+      <NavBar />
     </>
   );
 }
