@@ -23,8 +23,6 @@ interface Favorite {
 export default function FavoritesPage() {
   const router = useRouter();
   const [favorites, setFavorites] = useState<Favorite[]>([]);
-  const [applying, setApplying] = useState<number | null>(null);
-  const [message, setMessage] = useState("");
   const [toast, setToast] = useState<string | null>(null);
   const [remaining, setRemaining] = useState<number | null>(null);
 
@@ -42,7 +40,7 @@ export default function FavoritesPage() {
     const res = await fetch("/api/apply", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ companyId, message }),
+      body: JSON.stringify({ companyId }),
     });
     const data = await res.json();
     if (!res.ok) {
@@ -50,8 +48,6 @@ export default function FavoritesPage() {
       return;
     }
     setRemaining(data.remaining);
-    setApplying(null);
-    setMessage("");
     showToast("応募しました！");
     // Remove from favorites after applying
     setFavorites((prev) => prev.filter((f) => f.companyId !== companyId));
@@ -95,7 +91,6 @@ export default function FavoritesPage() {
             {favorites.map((fav) => {
               const c = fav.company;
               const logoColor = c.profile?.logoColor || "#6366f1";
-              const isApplying = applying === c.id;
 
               return (
                 <div key={fav.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
@@ -119,30 +114,13 @@ export default function FavoritesPage() {
                         <Trash2 className="w-4 h-4" />
                       </button>
                       <button
-                        onClick={() => setApplying(isApplying ? null : c.id)}
+                        onClick={() => handleApply(c.id)}
                         className="bg-indigo-600 text-white px-4 py-1.5 rounded-full text-xs font-bold hover:bg-indigo-700 transition"
                       >
-                        {isApplying ? "閉じる" : "応募"}
+                        応募
                       </button>
                     </div>
                   </div>
-
-                  {isApplying && (
-                    <div className="px-4 pb-4 border-t border-gray-50 pt-3">
-                      <textarea
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        placeholder="志望動機やメッセージ（任意）"
-                        className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none h-20 text-gray-800"
-                      />
-                      <button
-                        onClick={() => handleApply(c.id)}
-                        className="mt-2 w-full bg-green-500 text-white py-2 rounded-xl text-sm font-bold hover:bg-green-600 transition"
-                      >
-                        応募を送信する
-                      </button>
-                    </div>
-                  )}
                 </div>
               );
             })}
