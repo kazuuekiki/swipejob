@@ -25,7 +25,7 @@ export default function CompanyProfilePage() {
         if (d?.profile) setForm(d.profile);
         setLoading(false);
       });
-  }, [status, router]);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
