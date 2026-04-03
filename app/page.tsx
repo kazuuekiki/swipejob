@@ -76,17 +76,16 @@ export default function HomePage() {
     <>
       <NavBar />
       <main className="pt-14 min-h-screen">
-        <div className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white px-6 py-8 text-center">
-          <h1 className="text-2xl font-black tracking-tight mb-1">SwipeJob</h1>
-          <p className="text-sm text-indigo-200">スワイプして理想の会社を見つけよう</p>
+        <div className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white px-4 py-2 flex items-center justify-between">
+          <h1 className="text-base font-black tracking-tight">SwipeJob</h1>
           {remaining !== null && (
-            <div className="mt-3 inline-block bg-white/20 backdrop-blur text-white text-xs px-3 py-1.5 rounded-full">
-              今日あと <span className="font-bold text-lg">{remaining}</span> 件応募できます
-            </div>
+            <span className="bg-white/20 backdrop-blur text-white text-[11px] px-2.5 py-1 rounded-full">
+              残り <span className="font-bold">{remaining}</span> 件
+            </span>
           )}
         </div>
 
-        <div className="px-4 py-6">
+        <div className="px-4 py-3">
           {loading ? (
             <div className="flex items-center justify-center h-80">
               <div className="w-10 h-10 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin" />
