@@ -181,9 +181,8 @@ export default function StudentProfilePage() {
           {/* 自己紹介 */}
           <Section title="自己紹介">
             <Field label="居住地" value={profile.location || ""} onChange={(v) => handleChange("location", v || null)} />
-            <TextArea label="自己紹介" value={profile.bio || ""} onChange={(v) => handleChange("bio", v || null)} />
-            <TextArea label="自己PR" value={profile.selfPr || ""} onChange={(v) => handleChange("selfPr", v || null)} />
-            <TextArea label="ガクチカ" value={profile.gakuchika || ""} onChange={(v) => handleChange("gakuchika", v || null)} />
+            <TextArea label="自己紹介" value={profile.bio || ""} onChange={(v) => handleChange("bio", v || null)} required />
+            <TextArea label="自己PR" value={profile.selfPr || ""} onChange={(v) => handleChange("selfPr", v || null)} required />
           </Section>
 
           {/* 希望 */}
@@ -195,9 +194,9 @@ export default function StudentProfilePage() {
 
           {/* スキル・経験 */}
           <Section title="スキル・経験">
-            <Field label="スキル" value={profile.skills || ""} onChange={(v) => handleChange("skills", v || null)} placeholder="例: React, Python, AWS" />
+            <Field label="スキル" value={profile.skills || ""} onChange={(v) => handleChange("skills", v || null)} placeholder="例: リーダーシップ, Python, Excel" />
             <Field label="資格" value={profile.qualifications || ""} onChange={(v) => handleChange("qualifications", v || null)} placeholder="例: TOEIC 800, 基本情報技術者" />
-            <TextArea label="インターン経験" value={profile.internship || ""} onChange={(v) => handleChange("internship", v || null)} />
+            <TextArea label="アルバイト等経験" value={profile.internship || ""} onChange={(v) => handleChange("internship", v || null)} />
           </Section>
 
           {/* レジュメ */}
@@ -258,13 +257,15 @@ function Field({
 }
 
 function TextArea({
-  label, value, onChange, placeholder,
+  label, value, onChange, placeholder, required,
 }: {
-  label: string; value: string; onChange: (v: string) => void; placeholder?: string;
+  label: string; value: string; onChange: (v: string) => void; placeholder?: string; required?: boolean;
 }) {
   return (
     <div>
-      <label className="text-xs text-gray-500 mb-1 block">{label}</label>
+      <label className="text-xs text-gray-500 mb-1 block">
+        {label} {required && <span className="text-red-400">*</span>}
+      </label>
       <textarea
         value={value}
         onChange={(e) => onChange(e.target.value)}
