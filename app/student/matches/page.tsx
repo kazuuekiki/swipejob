@@ -50,13 +50,13 @@ export default function MatchesPage() {
                   <div className="flex-1 min-w-0">
                     <h3 className="font-bold text-gray-800 truncate">{company.companyName}</h3>
                     <p className="text-xs text-gray-400">{company.profile?.industry}</p>
-                    <p className="text-xs text-green-500 font-medium mt-0.5">マッチしました！</p>
+                    <p className="text-xs text-[#2774AE] font-medium mt-0.5">マッチしました！</p>
                   </div>
                   <button
                     onClick={() => router.push(`/student/chat/${match.id}`)}
-                    className="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center flex-shrink-0"
+                    className="w-10 h-10 bg-[#2774AE]/10 rounded-xl flex items-center justify-center flex-shrink-0"
                   >
-                    <MessageCircle className="w-5 h-5 text-indigo-600" />
+                    <MessageCircle className="w-5 h-5 text-[#2774AE]" />
                   </button>
                 </div>
               );

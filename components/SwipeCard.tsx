@@ -108,13 +108,13 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
             </span>
             {/* LIKE / SKIP stamps */}
             <div
-              className="absolute top-6 left-6 border-4 border-green-400 text-green-400 text-2xl font-black px-3 py-1 rounded-xl rotate-[-15deg]"
+              className="absolute top-6 left-6 border-4 border-[#FFD100] text-[#FFD100] text-2xl font-black px-3 py-1 rounded-xl rotate-[-15deg]"
               style={{ opacity: likeOpacity }}
             >
               LIKE
             </div>
             <div
-              className="absolute top-6 right-6 border-4 border-red-400 text-red-400 text-2xl font-black px-3 py-1 rounded-xl rotate-[15deg]"
+              className="absolute top-6 right-6 border-4 border-white/80 text-white/80 text-2xl font-black px-3 py-1 rounded-xl rotate-[15deg]"
               style={{ opacity: skipOpacity }}
             >
               SKIP
@@ -125,7 +125,7 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
           <div className="p-4">
             <h2 className="text-lg font-bold text-gray-800 mb-0.5">{current.companyName}</h2>
             {current.profile?.catchphrase && (
-              <p className="text-sm text-indigo-600 font-medium mb-2">
+              <p className="text-sm text-[#2774AE] font-medium mb-2">
                 {current.profile.catchphrase}
               </p>
             )}
@@ -153,16 +153,16 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
           onClick={() => triggerSwipe("skip")}
           className="w-14 h-14 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center hover:scale-105 active:scale-95 transition"
         >
-          <X className="w-6 h-6 text-red-400" />
+          <X className="w-6 h-6 text-gray-400" />
         </button>
 
         <span className="text-xs text-gray-400">{index + 1} / {companies.length}</span>
 
         <button
           onClick={() => triggerSwipe("like")}
-          className="w-14 h-14 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center hover:scale-105 active:scale-95 transition"
+          className="w-14 h-14 rounded-full bg-gradient-to-br from-[#2774AE] to-[#1a5276] shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition"
         >
-          <Heart className="w-6 h-6 text-green-400" />
+          <Heart className="w-6 h-6 text-[#FFD100]" />
         </button>
       </div>
     </div>

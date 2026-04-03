@@ -72,7 +72,7 @@ export default function StudentChatPage() {
                 <div
                   className={`max-w-[75%] px-4 py-2 rounded-2xl text-sm ${
                     isMine
-                      ? "bg-indigo-600 text-white rounded-br-sm"
+                      ? "bg-[#2774AE] text-white rounded-br-sm"
                       : "bg-white text-gray-800 border border-gray-100 rounded-bl-sm"
                   }`}
                 >
@@ -91,11 +91,11 @@ export default function StudentChatPage() {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && sendMessage()}
             placeholder="メッセージを入力..."
-            className="flex-1 border border-gray-200 rounded-2xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="flex-1 border border-gray-200 rounded-2xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2774AE]"
           />
           <button
             onClick={sendMessage}
-            className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center"
+            className="w-10 h-10 bg-[#2774AE] rounded-xl flex items-center justify-center"
           >
             <Send className="w-4 h-4 text-white" />
           </button>

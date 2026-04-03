@@ -37,7 +37,7 @@ export default function ApplicationsPage() {
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-xl font-black text-gray-800">応募履歴</h1>
           {remaining !== null && (
-            <span className="text-xs bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full font-medium">
+            <span className="text-xs bg-[#2774AE]/10 text-[#2774AE] px-3 py-1 rounded-full font-medium">
               今日あと{remaining}件
             </span>
           )}
@@ -47,7 +47,7 @@ export default function ApplicationsPage() {
           <div className="text-center py-16 text-gray-400">
             <p className="text-4xl mb-3">📋</p>
             <p>まだ応募していません</p>
-            <a href="/" className="mt-4 inline-block text-indigo-600 font-medium text-sm">企業を探す →</a>
+            <a href="/" className="mt-4 inline-block text-[#2774AE] font-medium text-sm">企業を探す →</a>
           </div>
         ) : (
           <div className="space-y-3">

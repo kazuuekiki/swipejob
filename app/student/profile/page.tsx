@@ -109,7 +109,7 @@ export default function StudentProfilePage() {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex items-center gap-1 text-indigo-600 font-bold text-sm"
+            className="flex items-center gap-1 text-[#2774AE] font-bold text-sm"
           >
             <Save className="w-4 h-4" />
             {saving ? "保存中..." : "保存"}
@@ -127,7 +127,7 @@ export default function StudentProfilePage() {
                   <Camera className="w-8 h-8 text-gray-400" />
                 </div>
               )}
-              <div className="absolute bottom-0 right-0 w-7 h-7 bg-indigo-600 rounded-full flex items-center justify-center">
+              <div className="absolute bottom-0 right-0 w-7 h-7 bg-[#2774AE] rounded-full flex items-center justify-center">
                 <Camera className="w-3.5 h-3.5 text-white" />
               </div>
               <input type="file" accept="image/*" onChange={handlePhotoUpload} className="hidden" />
@@ -230,7 +230,7 @@ export default function StudentProfilePage() {
       <NavBar />
 
       {toast && (
-        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full text-white text-sm font-medium shadow-lg z-50 bg-green-500">
+        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full text-white text-sm font-medium shadow-lg z-50 bg-[#2774AE]">
           {toast}
         </div>
       )}
@@ -261,7 +261,7 @@ function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-800"
+        className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#2774AE] text-gray-800"
       />
     </div>
   );
@@ -281,7 +281,7 @@ function TextArea({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none h-24 text-gray-800"
+        className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#2774AE] resize-none h-24 text-gray-800"
       />
     </div>
   );

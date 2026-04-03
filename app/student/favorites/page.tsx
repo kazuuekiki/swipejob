@@ -69,7 +69,7 @@ export default function FavoritesPage() {
           <h1 className="text-xl font-black text-gray-800">気になるリスト</h1>
           {remaining !== null && (
             <span className="text-xs text-gray-400">
-              残り <span className="font-bold text-indigo-600">{remaining}</span> 件応募可
+              残り <span className="font-bold text-[#2774AE]">{remaining}</span> 件応募可
             </span>
           )}
         </div>
@@ -81,7 +81,7 @@ export default function FavoritesPage() {
             <p className="text-xs mt-1">スワイプでハートを押すと追加されます</p>
             <button
               onClick={() => router.push("/")}
-              className="mt-4 bg-indigo-600 text-white px-6 py-2 rounded-full text-sm font-semibold"
+              className="mt-4 bg-[#2774AE] text-white px-6 py-2 rounded-full text-sm font-semibold"
             >
               企業を探す
             </button>
@@ -115,7 +115,7 @@ export default function FavoritesPage() {
                       </button>
                       <button
                         onClick={() => handleApply(c.id)}
-                        className="bg-indigo-600 text-white px-4 py-1.5 rounded-full text-xs font-bold hover:bg-indigo-700 transition"
+                        className="bg-[#2774AE] text-white px-4 py-1.5 rounded-full text-xs font-bold hover:bg-[#1a5276] transition"
                       >
                         応募
                       </button>
@@ -131,7 +131,7 @@ export default function FavoritesPage() {
       <NavBar />
 
       {toast && (
-        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full text-white text-sm font-medium shadow-lg z-50 bg-green-500">
+        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full text-white text-sm font-medium shadow-lg z-50 bg-[#2774AE]">
           {toast}
         </div>
       )}
