@@ -191,7 +191,7 @@ export default function StudentProfilePage() {
 
           {/* 自己紹介 */}
           <Section title="自己紹介">
-            <Field label="居住地" value={profile.location || ""} onChange={(v) => handleChange("location", v || null)} />
+            <Field label="住所" value={profile.location || ""} onChange={(v) => handleChange("location", v || null)} placeholder="例）東京都千代田区丸の内" />
             <TextArea label="自己紹介" value={profile.bio || ""} onChange={(v) => handleChange("bio", v || null)} required />
             <TextArea label="自己PR" value={profile.selfPr || ""} onChange={(v) => handleChange("selfPr", v || null)} required />
           </Section>
