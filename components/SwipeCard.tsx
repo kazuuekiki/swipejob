@@ -94,7 +94,7 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
         <div className="rounded-3xl overflow-hidden shadow-2xl bg-white">
           {/* Logo area */}
           <div
-            className="h-56 flex items-center justify-center text-white text-6xl font-bold relative"
+            className="h-32 flex items-center justify-center text-white text-5xl font-bold relative"
             style={{ backgroundColor: logoColor }}
           >
             <span className="drop-shadow-lg">
@@ -116,8 +116,8 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
           </div>
 
           {/* Info */}
-          <div className="p-5">
-            <h2 className="text-xl font-bold text-gray-800 mb-1">{current.companyName}</h2>
+          <div className="p-4">
+            <h2 className="text-lg font-bold text-gray-800 mb-0.5">{current.companyName}</h2>
             {current.profile?.catchphrase && (
               <p className="text-sm text-indigo-600 font-medium mb-3">
                 {current.profile.catchphrase}
@@ -155,26 +155,26 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
       </p>
 
       {/* Buttons */}
-      <div className="flex items-center gap-6 mt-6">
+      <div className="flex items-center gap-6 mt-3">
         <button
           onClick={() => triggerSwipe("skip")}
-          className="w-16 h-16 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center hover:scale-105 active:scale-95 transition"
+          className="w-14 h-14 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center hover:scale-105 active:scale-95 transition"
         >
-          <X className="w-7 h-7 text-red-400" />
+          <X className="w-6 h-6 text-red-400" />
         </button>
 
         <button
           onClick={() => router.push(`/companies/${current.id}`)}
-          className="w-12 h-12 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center hover:scale-105 active:scale-95 transition text-[11px] font-bold text-gray-400"
+          className="w-10 h-10 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center hover:scale-105 active:scale-95 transition text-[10px] font-bold text-gray-400"
         >
           詳細
         </button>
 
         <button
           onClick={() => triggerSwipe("like")}
-          className="w-16 h-16 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center hover:scale-105 active:scale-95 transition"
+          className="w-14 h-14 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center hover:scale-105 active:scale-95 transition"
         >
-          <Heart className="w-7 h-7 text-green-400" />
+          <Heart className="w-6 h-6 text-green-400" />
         </button>
       </div>
     </div>
