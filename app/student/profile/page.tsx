@@ -21,9 +21,6 @@ interface Profile {
   skills: string | null;
   qualifications: string | null;
   internship: string | null;
-  portfolioUrl: string | null;
-  githubUrl: string | null;
-  linkedinUrl: string | null;
   photoUrl: string | null;
   resumeUrl: string | null;
 }
@@ -201,13 +198,6 @@ export default function StudentProfilePage() {
             <Field label="スキル" value={profile.skills || ""} onChange={(v) => handleChange("skills", v || null)} placeholder="例: React, Python, AWS" />
             <Field label="資格" value={profile.qualifications || ""} onChange={(v) => handleChange("qualifications", v || null)} placeholder="例: TOEIC 800, 基本情報技術者" />
             <TextArea label="インターン経験" value={profile.internship || ""} onChange={(v) => handleChange("internship", v || null)} />
-          </Section>
-
-          {/* リンク */}
-          <Section title="リンク">
-            <Field label="ポートフォリオURL" value={profile.portfolioUrl || ""} onChange={(v) => handleChange("portfolioUrl", v || null)} placeholder="https://" />
-            <Field label="GitHub" value={profile.githubUrl || ""} onChange={(v) => handleChange("githubUrl", v || null)} placeholder="https://github.com/..." />
-            <Field label="LinkedIn" value={profile.linkedinUrl || ""} onChange={(v) => handleChange("linkedinUrl", v || null)} placeholder="https://linkedin.com/in/..." />
           </Section>
 
           {/* レジュメ */}
