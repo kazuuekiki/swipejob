@@ -92,7 +92,7 @@ export default function StudentProfilePage() {
   if (loading || !profile) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <div className="w-10 h-10 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin" />
+        <div className="w-9 h-9 border-[3px] border-[#2774AE]/20 border-t-[#2774AE] rounded-full animate-spin" />
       </div>
     );
   }
@@ -101,52 +101,52 @@ export default function StudentProfilePage() {
     <>
       <main className="pb-20 max-w-md mx-auto">
         {/* Header */}
-        <div className="sticky top-0 z-40 bg-white border-b border-gray-100 px-4 py-3 flex items-center justify-between">
-          <button onClick={() => router.back()} className="flex items-center gap-1 text-gray-500">
-            <ArrowLeft className="w-5 h-5" />
+        <div className="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-white/40 px-4 py-3.5 flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.03)]">
+          <button onClick={() => router.back()} className="p-1 -ml-1 hover:bg-gray-100 rounded-lg transition-colors">
+            <ArrowLeft className="w-5 h-5 text-gray-500" />
           </button>
-          <h1 className="font-bold text-gray-800">マイプロフィール</h1>
+          <h1 className="font-bold text-gray-800 tracking-tight">マイプロフィール</h1>
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex items-center gap-1 text-[#2774AE] font-bold text-sm"
+            className="flex items-center gap-1.5 text-[#2774AE] font-bold text-sm hover:text-[#1e5f94] transition-colors"
           >
             <Save className="w-4 h-4" />
             {saving ? "保存中..." : "保存"}
           </button>
         </div>
 
-        <div className="px-4 py-4 space-y-6">
+        <div className="px-4 py-6 space-y-7">
           {/* 証明写真 */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center animate-fade-in">
             <label className="relative cursor-pointer group">
               {profile.photoUrl ? (
-                <img src={profile.photoUrl} alt="証明写真" className="w-24 h-24 rounded-full object-cover border-2 border-gray-200" />
+                <img src={profile.photoUrl} alt="証明写真" className="w-24 h-24 rounded-full object-cover border-2 border-white shadow-[0_2px_16px_rgba(0,0,0,0.08)]" />
               ) : (
-                <div className="w-24 h-24 rounded-full bg-gray-100 flex items-center justify-center border-2 border-dashed border-gray-300">
-                  <Camera className="w-8 h-8 text-gray-400" />
+                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center border-2 border-dashed border-gray-200">
+                  <Camera className="w-7 h-7 text-gray-300" />
                 </div>
               )}
-              <div className="absolute bottom-0 right-0 w-7 h-7 bg-[#2774AE] rounded-full flex items-center justify-center">
-                <Camera className="w-3.5 h-3.5 text-white" />
+              <div className="absolute bottom-0 right-0 w-7 h-7 bg-[#2774AE] rounded-full flex items-center justify-center shadow-sm border-2 border-white">
+                <Camera className="w-3 h-3 text-white" />
               </div>
               <input type="file" accept="image/*" onChange={handlePhotoUpload} className="hidden" />
             </label>
-            <p className="text-[10px] text-gray-400 mt-1">証明写真をアップロード</p>
+            <p className="text-[10px] text-gray-400 mt-2">証明写真をアップロード</p>
           </div>
 
           {/* 基本情報 */}
-          <Section title="基本情報（必須）">
+          <Section title="基本情報" required>
             <Field label="氏名" value={profile.name} onChange={(v) => handleChange("name", v)} required />
             <div>
-              <label className="text-xs text-gray-500 mb-1 block">
-                生年月日 <span className="text-red-400">*</span>
+              <label className="text-[11px] text-gray-400 font-medium mb-1.5 block tracking-wide">
+                生年月日 <span className="text-[#2774AE]">*</span>
               </label>
               <input
                 type="date"
                 value={profile.birthDate || ""}
                 onChange={(e) => handleChange("birthDate", e.target.value || null)}
-                className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm bg-white text-gray-800"
+                className="w-full border border-gray-150 rounded-xl px-3.5 py-3 text-sm bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#2774AE]/20 focus:border-[#2774AE]/30 transition-all"
               />
             </div>
           </Section>
@@ -155,11 +155,11 @@ export default function StudentProfilePage() {
           <Section title="学歴">
             <Field label="学校名（最終卒業または在学中）" value={profile.school} onChange={(v) => handleChange("school", v)} required />
             <div>
-              <label className="text-xs text-gray-500 mb-1 block">学歴区分</label>
+              <label className="text-[11px] text-gray-400 font-medium mb-1.5 block tracking-wide">学歴区分</label>
               <select
                 value={profile.educationType || ""}
                 onChange={(e) => handleChange("educationType", e.target.value || null)}
-                className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm bg-white text-gray-800"
+                className="w-full border border-gray-150 rounded-xl px-3.5 py-3 text-sm bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#2774AE]/20 focus:border-[#2774AE]/30 transition-all"
               >
                 <option value="">選択してください</option>
                 {EDUCATION_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
@@ -167,21 +167,21 @@ export default function StudentProfilePage() {
             </div>
             <Field label="学部・学科" value={profile.faculty || ""} onChange={(v) => handleChange("faculty", v || null)} />
             <div>
-              <label className="text-xs text-gray-500 mb-1 block">
-                卒業年月（在学中の方は予定年月） <span className="text-red-400">*</span>
+              <label className="text-[11px] text-gray-400 font-medium mb-1.5 block tracking-wide">
+                卒業年月（在学中の方は予定年月） <span className="text-[#2774AE]">*</span>
               </label>
               <div className="grid grid-cols-2 gap-3">
                 <select
                   value={profile.graduationYear}
                   onChange={(e) => handleChange("graduationYear", Number(e.target.value))}
-                  className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm bg-white text-gray-800"
+                  className="w-full border border-gray-150 rounded-xl px-3.5 py-3 text-sm bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#2774AE]/20 focus:border-[#2774AE]/30 transition-all"
                 >
                   {YEARS.map((y) => <option key={y} value={y}>{y}年</option>)}
                 </select>
                 <select
                   value={profile.graduationMonth}
                   onChange={(e) => handleChange("graduationMonth", Number(e.target.value))}
-                  className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm bg-white text-gray-800"
+                  className="w-full border border-gray-150 rounded-xl px-3.5 py-3 text-sm bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#2774AE]/20 focus:border-[#2774AE]/30 transition-all"
                 >
                   {MONTHS.map((m) => <option key={m} value={m}>{m}月</option>)}
                 </select>
@@ -212,15 +212,17 @@ export default function StudentProfilePage() {
 
           {/* レジュメ */}
           <Section title="レジュメ">
-            <label className="flex items-center gap-3 border border-dashed border-gray-300 rounded-xl p-4 cursor-pointer hover:bg-gray-50 transition">
-              <FileText className="w-8 h-8 text-gray-400 flex-shrink-0" />
+            <label className="flex items-center gap-3 bg-white border border-gray-150 border-dashed rounded-xl p-4 cursor-pointer hover:bg-gray-50/50 hover:border-[#2774AE]/20 transition-all group">
+              <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center group-hover:bg-[#2774AE]/5 transition-colors">
+                <FileText className="w-5 h-5 text-gray-400 group-hover:text-[#2774AE] transition-colors" />
+              </div>
               <div className="flex-1">
                 {profile.resumeUrl ? (
-                  <p className="text-sm text-green-600 font-medium">アップロード済み</p>
+                  <p className="text-sm text-emerald-600 font-medium">アップロード済み</p>
                 ) : (
                   <p className="text-sm text-gray-500">PDF/画像をアップロード</p>
                 )}
-                <p className="text-[10px] text-gray-400">5MB以下</p>
+                <p className="text-[10px] text-gray-400 mt-0.5">5MB以下</p>
               </div>
               <input type="file" accept=".pdf,image/*" onChange={handleResumeUpload} className="hidden" />
             </label>
@@ -230,7 +232,7 @@ export default function StudentProfilePage() {
       <NavBar />
 
       {toast && (
-        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full text-white text-sm font-medium shadow-lg z-50 bg-[#2774AE]">
+        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 px-5 py-2.5 rounded-2xl text-white text-[13px] font-medium shadow-[0_4px_20px_rgba(39,116,174,0.25)] z-50 bg-[#2774AE]/90 backdrop-blur-sm animate-fade-in-up">
           {toast}
         </div>
       )}
@@ -238,11 +240,14 @@ export default function StudentProfilePage() {
   );
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ title, children, required }: { title: string; children: React.ReactNode; required?: boolean }) {
   return (
-    <div>
-      <h2 className="text-sm font-bold text-gray-700 mb-3">{title}</h2>
-      <div className="space-y-3">{children}</div>
+    <div className="animate-fade-in-up">
+      <h2 className="text-[13px] font-bold text-gray-800 mb-3.5 tracking-tight">
+        {title}
+        {required && <span className="text-[11px] text-gray-400 font-normal ml-1.5">（必須）</span>}
+      </h2>
+      <div className="space-y-3.5">{children}</div>
     </div>
   );
 }
@@ -254,14 +259,14 @@ function Field({
 }) {
   return (
     <div>
-      <label className="text-xs text-gray-500 mb-1 block">
-        {label} {required && <span className="text-red-400">*</span>}
+      <label className="text-[11px] text-gray-400 font-medium mb-1.5 block tracking-wide">
+        {label} {required && <span className="text-[#2774AE]">*</span>}
       </label>
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#2774AE] text-gray-800"
+        className="w-full border border-gray-150 rounded-xl px-3.5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2774AE]/20 focus:border-[#2774AE]/30 text-gray-800 placeholder:text-gray-300 transition-all"
       />
     </div>
   );
@@ -274,14 +279,14 @@ function TextArea({
 }) {
   return (
     <div>
-      <label className="text-xs text-gray-500 mb-1 block">
-        {label} {required && <span className="text-red-400">*</span>}
+      <label className="text-[11px] text-gray-400 font-medium mb-1.5 block tracking-wide">
+        {label} {required && <span className="text-[#2774AE]">*</span>}
       </label>
       <textarea
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#2774AE] resize-none h-24 text-gray-800"
+        className="w-full border border-gray-150 rounded-xl px-3.5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2774AE]/20 focus:border-[#2774AE]/30 resize-none h-28 text-gray-800 placeholder:text-gray-300 transition-all leading-relaxed"
       />
     </div>
   );

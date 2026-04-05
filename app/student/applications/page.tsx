@@ -15,11 +15,11 @@ interface Application {
   };
 }
 
-const statusLabel: Record<string, { label: string; color: string }> = {
-  applied: { label: "応募済み", color: "bg-blue-100 text-blue-700" },
-  reviewing: { label: "確認中", color: "bg-yellow-100 text-yellow-700" },
-  matched: { label: "マッチ!", color: "bg-green-100 text-green-700" },
-  rejected: { label: "見送り", color: "bg-gray-100 text-gray-500" },
+const statusLabel: Record<string, { label: string; color: string; bg: string }> = {
+  applied: { label: "応募済み", color: "text-[#2774AE]", bg: "bg-[#2774AE]/8" },
+  reviewing: { label: "確認中", color: "text-amber-600", bg: "bg-amber-50" },
+  matched: { label: "マッチ!", color: "text-emerald-600", bg: "bg-emerald-50" },
+  rejected: { label: "見送り", color: "text-gray-400", bg: "bg-gray-50" },
 };
 
 export default function ApplicationsPage() {
@@ -33,39 +33,45 @@ export default function ApplicationsPage() {
 
   return (
     <>
-      <main className="pb-16 max-w-md mx-auto px-4 py-6">
-        <div className="flex items-center justify-between mb-4">
-          <h1 className="text-xl font-black text-gray-800">応募履歴</h1>
+      <main className="pb-20 max-w-md mx-auto px-4 pt-6">
+        <div className="flex items-center justify-between mb-5">
+          <h1 className="text-xl font-bold text-gray-900 tracking-tight">応募履歴</h1>
           {remaining !== null && (
-            <span className="text-xs bg-[#2774AE]/10 text-[#2774AE] px-3 py-1 rounded-full font-medium">
+            <span className="text-[11px] bg-[#2774AE]/8 text-[#2774AE] px-3 py-1.5 rounded-full font-semibold">
               今日あと{remaining}件
             </span>
           )}
         </div>
 
         {applications.length === 0 ? (
-          <div className="text-center py-16 text-gray-400">
-            <p className="text-4xl mb-3">📋</p>
-            <p>まだ応募していません</p>
-            <a href="/" className="mt-4 inline-block text-[#2774AE] font-medium text-sm">企業を探す →</a>
+          <div className="text-center py-20 animate-fade-in">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-50 to-blue-100/50 flex items-center justify-center mx-auto mb-4">
+              <span className="text-2xl">📋</span>
+            </div>
+            <p className="text-[15px] font-semibold text-gray-700 mb-1">まだ応募していません</p>
+            <a href="/" className="mt-4 inline-block text-[#2774AE] font-semibold text-sm">企業を探す →</a>
           </div>
         ) : (
           <div className="space-y-3">
-            {applications.map((app) => {
+            {applications.map((app, i) => {
               const s = statusLabel[app.status] || statusLabel.applied;
               return (
-                <div key={app.id} className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                <div
+                  key={app.id}
+                  className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 border border-white/60 animate-fade-in-up shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
+                  style={{ animationDelay: `${i * 50}ms` }}
+                >
                   <div className="flex items-start justify-between mb-2">
                     <div>
-                      <h3 className="font-bold text-gray-800">{app.company.companyName}</h3>
-                      <p className="text-xs text-gray-400">{app.company.profile?.industry}</p>
+                      <h3 className="font-bold text-gray-800 text-[15px] tracking-tight">{app.company.companyName}</h3>
+                      <p className="text-[11px] text-gray-400 mt-0.5">{app.company.profile?.industry}</p>
                     </div>
-                    <span className={`text-xs px-2 py-1 rounded-full font-medium ${s.color}`}>{s.label}</span>
+                    <span className={`text-[11px] px-2.5 py-1 rounded-full font-semibold ${s.color} ${s.bg}`}>{s.label}</span>
                   </div>
                   {app.message && (
-                    <p className="text-xs text-gray-500 bg-gray-50 rounded-lg p-2 mt-2 line-clamp-2">{app.message}</p>
+                    <p className="text-[11px] text-gray-500 bg-gray-50/80 rounded-xl p-2.5 mt-2 line-clamp-2 leading-relaxed">{app.message}</p>
                   )}
-                  <p className="text-xs text-gray-300 mt-2">
+                  <p className="text-[11px] text-gray-300 mt-2.5 font-medium">
                     {new Date(app.createdAt).toLocaleDateString("ja-JP")}
                   </p>
                 </div>

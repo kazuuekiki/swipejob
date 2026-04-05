@@ -73,10 +73,10 @@ export default function HomePage() {
   return (
     <>
       <main className="pb-16 min-h-screen">
-        <div className="px-4 pt-1 pb-0 h-[calc(100vh-56px)]">
+        <div className="px-4 pt-1 pb-0 h-[calc(100vh-64px)]">
           {loading ? (
             <div className="flex items-center justify-center h-80">
-              <div className="w-10 h-10 border-4 border-[#2774AE] border-t-transparent rounded-full animate-spin" />
+              <div className="w-9 h-9 border-[3px] border-[#2774AE]/20 border-t-[#2774AE] rounded-full animate-spin" />
             </div>
           ) : (
             <SwipeCard companies={companies} onSwipe={handleSwipe} />
@@ -86,7 +86,13 @@ export default function HomePage() {
       <NavBar />
 
       {toast && (
-        <div className={`fixed bottom-20 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full text-white text-sm font-medium shadow-lg z-50 ${toast.type === "error" ? "bg-red-500" : "bg-[#2774AE]"}`}>
+        <div
+          className={`fixed bottom-20 left-1/2 -translate-x-1/2 px-5 py-2.5 rounded-2xl text-white text-[13px] font-medium z-50 animate-fade-in-up ${
+            toast.type === "error"
+              ? "bg-red-500/90 shadow-[0_4px_20px_rgba(239,68,68,0.25)]"
+              : "bg-[#2774AE]/90 shadow-[0_4px_20px_rgba(39,116,174,0.25)]"
+          } backdrop-blur-sm`}
+        >
           {toast.message}
         </div>
       )}
