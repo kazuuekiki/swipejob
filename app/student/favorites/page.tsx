@@ -44,7 +44,12 @@ export default function FavoritesPage() {
     });
     const data = await res.json();
     if (!res.ok) {
-      showToast(data.error || "エラーが発生しました");
+      if (data.incomplete) {
+        showToast("プロフィールの必須項目を入力してください");
+        setTimeout(() => router.push("/student/profile"), 1500);
+      } else {
+        showToast(data.error || "エラーが発生しました");
+      }
       return;
     }
     setRemaining(data.remaining);

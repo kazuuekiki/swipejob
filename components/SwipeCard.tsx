@@ -12,6 +12,7 @@ interface Company {
     location: string;
     employeeCount: string;
     industry: string;
+    culture: string;
     logoColor: string;
   } | null;
 }
@@ -134,19 +135,9 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
               </p>
             )}
             <div className="flex flex-wrap gap-1.5">
-              {current.profile?.salary && (
-                <span className="bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full text-[11px] text-gray-500 font-medium">
-                  💰 {current.profile.salary}
-                </span>
-              )}
               {current.profile?.location && (
                 <span className="bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full text-[11px] text-gray-500 font-medium">
                   📍 {current.profile.location}
-                </span>
-              )}
-              {current.profile?.employeeCount && (
-                <span className="bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full text-[11px] text-gray-500 font-medium">
-                  👥 {current.profile.employeeCount}
                 </span>
               )}
               {current.profile?.industry && (
@@ -154,6 +145,11 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
                   🏢 {current.profile.industry}
                 </span>
               )}
+              {current.profile?.culture && current.profile.culture.split(",").map((tag) => (
+                <span key={tag} className="bg-[#2774AE]/5 border border-[#2774AE]/10 px-2.5 py-1 rounded-full text-[11px] text-[#2774AE] font-medium">
+                  {tag.trim()}
+                </span>
+              ))}
             </div>
           </div>
         </div>

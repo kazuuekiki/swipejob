@@ -24,7 +24,7 @@ export async function PATCH(req: NextRequest) {
     "educationType", "faculty", "location", "bio", "selfPr",
     "desiredIndustry", "desiredJob", "desiredLocation",
     "skills", "qualifications", "internship",
-    "photoUrl", "resumeUrl",
+    "mbti", "photoUrl", "resumeUrl",
   ];
 
   const updateData: Record<string, any> = {};

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import NavBar from "@/components/NavBar";
+import { Check } from "lucide-react";
 
 interface Application {
   id: number;
@@ -15,12 +16,64 @@ interface Application {
   };
 }
 
-const statusLabel: Record<string, { label: string; color: string; bg: string }> = {
-  applied: { label: "応募済み", color: "text-[#2774AE]", bg: "bg-[#2774AE]/8" },
-  reviewing: { label: "確認中", color: "text-amber-600", bg: "bg-amber-50" },
-  matched: { label: "マッチ!", color: "text-emerald-600", bg: "bg-emerald-50" },
-  rejected: { label: "見送り", color: "text-gray-400", bg: "bg-gray-50" },
-};
+const STEPS = [
+  { key: "applied", label: "応募済み" },
+  { key: "reviewing", label: "書類確認中" },
+  { key: "interview", label: "面接" },
+  { key: "matched", label: "マッチ" },
+];
+
+function getStepIndex(status: string): number {
+  if (status === "rejected") return -1;
+  const idx = STEPS.findIndex((s) => s.key === status);
+  return idx >= 0 ? idx : 0;
+}
+
+function ProgressBar({ status }: { status: string }) {
+  const isRejected = status === "rejected";
+  const current = getStepIndex(status);
+
+  return (
+    <div className="mt-3 mb-1">
+      <div className="flex items-center justify-between relative">
+        {/* Background line */}
+        <div className="absolute top-3 left-[12%] right-[12%] h-[2px] bg-gray-100 z-0" />
+        {/* Active line */}
+        {!isRejected && current > 0 && (
+          <div
+            className="absolute top-3 left-[12%] h-[2px] bg-[#2774AE] z-0 transition-all duration-500"
+            style={{ width: `${(current / (STEPS.length - 1)) * 76}%` }}
+          />
+        )}
+
+        {STEPS.map((step, i) => {
+          const isDone = !isRejected && i <= current;
+          const isCurrent = !isRejected && i === current;
+          return (
+            <div key={step.key} className="flex flex-col items-center z-10 flex-1">
+              <div
+                className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold transition-all duration-300 ${
+                  isDone
+                    ? "bg-[#2774AE] text-white shadow-[0_1px_6px_rgba(39,116,174,0.3)]"
+                    : "bg-gray-100 text-gray-400"
+                } ${isCurrent ? "ring-2 ring-[#2774AE]/20 ring-offset-1" : ""}`}
+              >
+                {isDone && i < current ? <Check className="w-3 h-3" /> : i + 1}
+              </div>
+              <span className={`text-[9px] mt-1 font-medium ${isDone ? "text-[#2774AE]" : "text-gray-300"}`}>
+                {step.label}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+
+      {isRejected && (
+        <p className="text-[11px] text-center text-gray-400 mt-2">選考は終了しました</p>
+      )}
+    </div>
+  );
+}
 
 export default function ApplicationsPage() {
   const [applications, setApplications] = useState<Application[]>([]);
@@ -54,26 +107,23 @@ export default function ApplicationsPage() {
         ) : (
           <div className="space-y-3">
             {applications.map((app, i) => {
-              const s = statusLabel[app.status] || statusLabel.applied;
               return (
                 <div
                   key={app.id}
                   className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 border border-white/60 animate-fade-in-up shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
                   style={{ animationDelay: `${i * 50}ms` }}
                 >
-                  <div className="flex items-start justify-between mb-2">
+                  <div className="flex items-start justify-between">
                     <div>
                       <h3 className="font-bold text-gray-800 text-[15px] tracking-tight">{app.company.companyName}</h3>
                       <p className="text-[11px] text-gray-400 mt-0.5">{app.company.profile?.industry}</p>
                     </div>
-                    <span className={`text-[11px] px-2.5 py-1 rounded-full font-semibold ${s.color} ${s.bg}`}>{s.label}</span>
+                    <p className="text-[10px] text-gray-300 font-medium">
+                      {new Date(app.createdAt).toLocaleDateString("ja-JP")}
+                    </p>
                   </div>
-                  {app.message && (
-                    <p className="text-[11px] text-gray-500 bg-gray-50/80 rounded-xl p-2.5 mt-2 line-clamp-2 leading-relaxed">{app.message}</p>
-                  )}
-                  <p className="text-[11px] text-gray-300 mt-2.5 font-medium">
-                    {new Date(app.createdAt).toLocaleDateString("ja-JP")}
-                  </p>
+
+                  <ProgressBar status={app.status} />
                 </div>
               );
             })}

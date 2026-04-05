@@ -12,6 +12,7 @@ interface Company {
     location: string;
     employeeCount: string;
     industry: string;
+    culture: string;
     logoColor: string;
   } | null;
 }
@@ -73,7 +74,12 @@ export default function HomePage() {
   return (
     <>
       <main className="pb-16 min-h-screen">
-        <div className="px-4 pt-1 pb-0 h-[calc(100vh-64px)]">
+        <div className="flex items-center justify-center pt-2 pb-0">
+          <span className="text-[15px] font-black tracking-tight">
+            <span className="text-[#2774AE]">Job</span><span className="text-[#FFD100]">Swipe</span>
+          </span>
+        </div>
+        <div className="px-4 pt-0 pb-0 h-[calc(100vh-90px)]">
           {loading ? (
             <div className="flex items-center justify-center h-80">
               <div className="w-9 h-9 border-[3px] border-[#2774AE]/20 border-t-[#2774AE] rounded-full animate-spin" />

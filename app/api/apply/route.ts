@@ -13,6 +13,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "企業IDが必要です" }, { status: 400 });
   }
 
+  // プロフィール必須項目チェック
+  const studentProfile = await prisma.studentProfile.findUnique({
+    where: { id: profileId },
+  });
+  if (!studentProfile || !studentProfile.name || !studentProfile.birthDate || !studentProfile.bio || !studentProfile.selfPr) {
+    return NextResponse.json(
+      { error: "応募にはプロフィールの必須項目（氏名・生年月日・自己紹介・自己PR）を入力してください", incomplete: true },
+      { status: 400 }
+    );
+  }
+
   // 24時間以内の応募数チェック
   const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
   const recentCount = await prisma.application.count({

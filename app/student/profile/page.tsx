@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import NavBar from "@/components/NavBar";
-import { ArrowLeft, Camera, FileText, Save } from "lucide-react";
+import { ArrowLeft, Camera, FileText, Save, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 interface Profile {
@@ -22,25 +22,36 @@ interface Profile {
   skills: string | null;
   qualifications: string | null;
   internship: string | null;
+  mbti: string | null;
   photoUrl: string | null;
   resumeUrl: string | null;
 }
 
 const EDUCATION_TYPES = ["高校", "専門学校", "短大", "大学", "大学院", "その他"];
+const MBTI_TYPES = [
+  "INTJ", "INTP", "ENTJ", "ENTP",
+  "INFJ", "INFP", "ENFJ", "ENFP",
+  "ISTJ", "ISFJ", "ESTJ", "ESFJ",
+  "ISTP", "ISFP", "ESTP", "ESFP",
+];
 const YEARS = Array.from({ length: 10 }, (_, i) => 2024 + i);
 const MONTHS = Array.from({ length: 12 }, (_, i) => i + 1);
 
 export default function StudentProfilePage() {
   const router = useRouter();
   const [profile, setProfile] = useState<Profile | null>(null);
+  const [savedProfile, setSavedProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+  const [showLeaveDialog, setShowLeaveDialog] = useState(false);
+
+  const hasChanges = profile && savedProfile && JSON.stringify(profile) !== JSON.stringify(savedProfile);
 
   useEffect(() => {
     fetch("/api/student/profile")
       .then((r) => r.json())
-      .then((d) => { setProfile(d); setLoading(false); });
+      .then((d) => { setProfile(d); setSavedProfile(d); setLoading(false); });
   }, []);
 
   const showToast = (msg: string) => {
@@ -61,8 +72,17 @@ export default function StudentProfilePage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(profile),
     });
+    setSavedProfile({ ...profile });
     setSaving(false);
     showToast("保存しました！");
+  };
+
+  const handleBack = () => {
+    if (hasChanges) {
+      setShowLeaveDialog(true);
+    } else {
+      router.back();
+    }
   };
 
   const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -102,7 +122,7 @@ export default function StudentProfilePage() {
       <main className="pb-20 max-w-md mx-auto">
         {/* Header */}
         <div className="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-white/40 px-4 py-3.5 flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.03)]">
-          <button onClick={() => router.back()} className="p-1 -ml-1 hover:bg-gray-100 rounded-lg transition-colors">
+          <button onClick={handleBack} className="p-1 -ml-1 hover:bg-gray-100 rounded-lg transition-colors">
             <ArrowLeft className="w-5 h-5 text-gray-500" />
           </button>
           <h1 className="font-bold text-gray-800 tracking-tight">マイプロフィール</h1>
@@ -132,7 +152,16 @@ export default function StudentProfilePage() {
               </div>
               <input type="file" accept="image/*" onChange={handlePhotoUpload} className="hidden" />
             </label>
-            <p className="text-[10px] text-gray-400 mt-2">証明写真をアップロード</p>
+            {profile.photoUrl ? (
+              <button
+                onClick={() => handleChange("photoUrl", null)}
+                className="flex items-center gap-1 text-[11px] text-red-400 mt-2 hover:text-red-500 transition-colors"
+              >
+                <Trash2 className="w-3 h-3" /> 写真を削除
+              </button>
+            ) : (
+              <p className="text-[10px] text-gray-400 mt-2">証明写真をアップロード</p>
+            )}
           </div>
 
           {/* 基本情報 */}
@@ -192,8 +221,19 @@ export default function StudentProfilePage() {
           {/* 自己紹介 */}
           <Section title="自己紹介">
             <Field label="住所" value={profile.location || ""} onChange={(v) => handleChange("location", v || null)} placeholder="例）東京都千代田区丸の内" />
-            <TextArea label="自己紹介" value={profile.bio || ""} onChange={(v) => handleChange("bio", v || null)} required />
-            <TextArea label="自己PR" value={profile.selfPr || ""} onChange={(v) => handleChange("selfPr", v || null)} required />
+            <div>
+              <label className="text-[11px] text-gray-400 font-medium mb-1.5 block tracking-wide">MBTI</label>
+              <select
+                value={profile.mbti || ""}
+                onChange={(e) => handleChange("mbti", e.target.value || null)}
+                className="w-full border border-gray-150 rounded-xl px-3.5 py-3 text-sm bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#2774AE]/20 focus:border-[#2774AE]/30 transition-all"
+              >
+                <option value="">選択してください</option>
+                {MBTI_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
+              </select>
+            </div>
+            <TextArea label="自己紹介" value={profile.bio || ""} onChange={(v) => handleChange("bio", v || null)} required placeholder="例）○○大学○○学部に在籍中の○○と申します。大学ではマーケティングを専攻し、ゼミではデータ分析を用いた消費者行動の研究に取り組んでいます。課外活動ではイベント企画サークルの代表を務め、年間3回の大型イベントを運営しました。" />
+            <TextArea label="自己PR" value={profile.selfPr || ""} onChange={(v) => handleChange("selfPr", v || null)} required placeholder="例）私の強みは「課題発見力と実行力」です。アルバイト先の飲食店では、お客様アンケートを自主的に実施し、待ち時間への不満が多いことを発見。オペレーション改善を提案・実行した結果、回転率が15%向上し、売上増加に貢献しました。この経験から、現状に疑問を持ち改善策を実行する力を身につけました。" />
           </Section>
 
           {/* 希望 */}
@@ -207,7 +247,7 @@ export default function StudentProfilePage() {
           <Section title="スキル・経験">
             <Field label="スキル" value={profile.skills || ""} onChange={(v) => handleChange("skills", v || null)} placeholder="例: リーダーシップ, Python, Excel" />
             <Field label="資格" value={profile.qualifications || ""} onChange={(v) => handleChange("qualifications", v || null)} placeholder="例: TOEIC 800, 基本情報技術者" />
-            <TextArea label="アルバイト等経験" value={profile.internship || ""} onChange={(v) => handleChange("internship", v || null)} />
+            <TextArea label="アルバイト等経験" value={profile.internship || ""} onChange={(v) => handleChange("internship", v || null)} placeholder="例）カフェのバリスタとして2年間勤務。新人教育を担当し、マニュアルの整備とOJT制度を導入。チーム全体の接客品質向上に貢献しました。" />
           </Section>
 
           {/* レジュメ */}
@@ -226,6 +266,14 @@ export default function StudentProfilePage() {
               </div>
               <input type="file" accept=".pdf,image/*" onChange={handleResumeUpload} className="hidden" />
             </label>
+            {profile.resumeUrl && (
+              <button
+                onClick={() => handleChange("resumeUrl", null)}
+                className="flex items-center gap-1 text-[11px] text-red-400 hover:text-red-500 transition-colors mt-1"
+              >
+                <Trash2 className="w-3 h-3" /> レジュメを削除
+              </button>
+            )}
           </Section>
         </div>
       </main>
@@ -234,6 +282,29 @@ export default function StudentProfilePage() {
       {toast && (
         <div className="fixed bottom-20 left-1/2 -translate-x-1/2 px-5 py-2.5 rounded-2xl text-white text-[13px] font-medium shadow-[0_4px_20px_rgba(39,116,174,0.25)] z-50 bg-[#2774AE]/90 backdrop-blur-sm animate-fade-in-up">
           {toast}
+        </div>
+      )}
+
+      {showLeaveDialog && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white rounded-2xl p-6 mx-6 max-w-sm w-full shadow-[0_8px_40px_rgba(0,0,0,0.12)] animate-fade-in-up">
+            <h3 className="font-bold text-gray-800 text-base mb-2">変更が保存されていません</h3>
+            <p className="text-sm text-gray-500 mb-5 leading-relaxed">保存せずにこのページを離れますか？</p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowLeaveDialog(false)}
+                className="flex-1 py-2.5 rounded-xl border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors"
+              >
+                編集に戻る
+              </button>
+              <button
+                onClick={() => { setShowLeaveDialog(false); router.back(); }}
+                className="flex-1 py-2.5 rounded-xl bg-red-500 text-white text-sm font-semibold hover:bg-red-600 transition-colors"
+              >
+                保存しない
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </>

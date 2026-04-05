@@ -43,6 +43,7 @@ model StudentProfile {
   portfolioUrl    String? // ポートフォリオURL
   githubUrl       String? // GitHub
   linkedinUrl     String? // LinkedIn
+  mbti            String? // MBTI (e.g. INTJ, ENFP)
   photoUrl        String? // 証明写真URL (base64)
   resumeUrl       String? // レジュメURL (base64)
 
@@ -77,6 +78,7 @@ model CompanyProfile {
   catchphrase   String @default("")
   foundedYear   String @default("")
   workStyle     String @default("")
+  culture       String @default("") // カルチャータグ（カンマ区切り）
   logoColor     String @default("#6366f1")
 
   company Company @relation(fields: [companyId], references: [id])
