@@ -1,0 +1,978 @@
+[
+  {
+    "companyName": "株式会社 前田政",
+    "email": "hr1@company.example.jp",
+    "profile": {
+      "catchphrase": "残業少なく、年間休日１２５日以上組立配送職",
+      "description": "アルミサッシ建材を中心とした、エクステリア建材・木質建材・住設機器等　住宅用・ビル用建築資材の材工及び卸売販売",
+      "industry": "建築材料卸売業",
+      "location": "大阪府高石市",
+      "employeeCount": "93名",
+      "salary": "月給20.5万円〜31.6万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス,安定志向,成長志向",
+      "logoColor": "#6366f1"
+    }
+  },
+  {
+    "companyName": "株式会社 東海維持管理工業",
+    "email": "hr2@company.example.jp",
+    "profile": {
+      "catchphrase": "建設エンジニア／現場監督",
+      "description": "下水道の維持管理（管内の清掃・ＴＶカメラ車を使用した調査・特殊工法による管補修工事）、建設工事（各官公庁の土木工事）。公共工事が中心で業績も安定（施工実績中部地区ＮＯ。１）。",
+      "industry": "他に分類されない事業サービス業",
+      "location": "愛知県名古屋市",
+      "employeeCount": "55名",
+      "salary": "月給35.0万円〜49.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス,安定志向,チームワーク",
+      "logoColor": "#10b981"
+    }
+  },
+  {
+    "companyName": "株式会社 東部建設",
+    "email": "hr3@company.example.jp",
+    "profile": {
+      "catchphrase": "軌道工【野辺地町】日常を守る線路メンテナンススタッフ",
+      "description": "青森県内のＪＲと青い森鉄道の線路のメンテナンスを専門に業務をし、電車を利用する地域住民の方や観光客の足の他、物流の大動脈の貨物列車が安全に安定に輸送できるよう貢献しています。",
+      "industry": "一般土木建築工事業",
+      "location": "青森県上北郡",
+      "employeeCount": "36名",
+      "salary": "月給20.0万円〜24.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向,成長志向,チームワーク",
+      "logoColor": "#f59e0b"
+    }
+  },
+  {
+    "companyName": "アポロ精工株式会社",
+    "email": "hr4@company.example.jp",
+    "profile": {
+      "catchphrase": "機械設計（愛媛工場）",
+      "description": "自動はんだ装置及び関連機器の製造・販売各種製造装置及び検査装置の設計、製造及び販売画像処理関連のハードウェア開発　など",
+      "industry": "その他の生産用機械・同部分品製造業",
+      "location": "愛媛県西条市",
+      "employeeCount": "91名",
+      "salary": "月給20.0万円〜35.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス,技術重視",
+      "logoColor": "#ec4899"
+    }
+  },
+  {
+    "companyName": "株式会社 産栄工業",
+    "email": "hr5@company.example.jp",
+    "profile": {
+      "catchphrase": "【品質管理】金属製品の検査【品質保証】",
+      "description": "自動車部品製造　・トランスファー、順送、単発など各種プレス機での生産　・ＮＣ旋盤ロボット等での精密加工",
+      "industry": "自動車・同附属品製造業",
+      "location": "静岡県菊川市",
+      "employeeCount": "138名",
+      "salary": "月給18.7万円〜30.9万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#06b6d4"
+    }
+  },
+  {
+    "companyName": "國富株式会社神戸営業所",
+    "email": "hr6@company.example.jp",
+    "profile": {
+      "catchphrase": "潜水士（神戸営業所）／未経験者歓迎／入社後資格取得可",
+      "description": "潜水作業。潜水講習等。空気ボンベの空気充填耐圧検査。潜水用機器具、安全防災器具の卸売・小売業。",
+      "industry": "その他の機械器具卸売業",
+      "location": "兵庫県神戸市",
+      "employeeCount": "95名",
+      "salary": "月給21.9万円〜24.3万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#8b5cf6"
+    }
+  },
+  {
+    "companyName": "阪神電線株式会社 電線事業部（加古川工場）",
+    "email": "hr7@company.example.jp",
+    "profile": {
+      "catchphrase": "製造２Ｇ　機械メンテナンス・保守・保全",
+      "description": "ビニール電線の製造、販売　　　　　　　　　　　　【２７０２－４０８１９４－７】",
+      "industry": "電線・ケーブル製造業",
+      "location": "兵庫県加古川市",
+      "employeeCount": "140名",
+      "salary": "月給21.8万円〜31.8万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#f97316"
+    }
+  },
+  {
+    "companyName": "大協工業株式会社",
+    "email": "hr8@company.example.jp",
+    "profile": {
+      "catchphrase": "工業用ミシンの部品加工【ト】",
+      "description": "自動縫製機器、特殊工業用ミシン及び同部分品、精密部品及び附帯機器各種、その他精密機械器具金属製品の製造",
+      "industry": "その他の生産用機械・同部分品製造業",
+      "location": "兵庫県丹波篠山市",
+      "employeeCount": "55名",
+      "salary": "月給19.0万円〜24.4万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス",
+      "logoColor": "#64748b"
+    }
+  },
+  {
+    "companyName": "株式会社 大日",
+    "email": "hr9@company.example.jp",
+    "profile": {
+      "catchphrase": "電気工事作業スタッフ（徳島）",
+      "description": "建設業（土木、建築、電気、電気通信、管、塗装工事他）、建設工事に関係する調査・測量、設計業務、ＬＡＮ等の情報通信関連事業、コンピュータ及びネッ卜ワーク機器の販売　３６済　　静有",
+      "industry": "一般土木建築工事業",
+      "location": "徳島県徳島市",
+      "employeeCount": "98名",
+      "salary": "月給20.9万円〜35.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#059669"
+    }
+  },
+  {
+    "companyName": "株式会社 パパベル",
+    "email": "hr10@company.example.jp",
+    "profile": {
+      "catchphrase": "総合職（製造・販売）（高松店）",
+      "description": "パン製造小売３６済",
+      "industry": "パン・菓子製造業",
+      "location": "香川県高松市",
+      "employeeCount": "138名",
+      "salary": "月給20.2万円〜22.2万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#dc2626"
+    }
+  },
+  {
+    "companyName": "株式会社 アーネット",
+    "email": "hr11@company.example.jp",
+    "profile": {
+      "catchphrase": "賃貸不動産管理業務（正）／東京都千代田区",
+      "description": "不動産管理業全般管理する物件で家主様向けに、入居者が退去する際のクロス張替えや美装工事等を中心に原状回復工事も行っています。",
+      "industry": "不動産管理業",
+      "location": "東京都千代田区",
+      "employeeCount": "29名",
+      "salary": "月給25.0万円〜30.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス,未経験歓迎",
+      "logoColor": "#1e3a5f"
+    }
+  },
+  {
+    "companyName": "社会福祉法人 上の原学園",
+    "email": "hr12@company.example.jp",
+    "profile": {
+      "catchphrase": "介護支援員（特別養護老人ホーム）／正社員",
+      "description": "障害者支援施設、障害児支援施設、グループホーム、相談支援事業、生活介護事業。特別養護老人ホーム。",
+      "industry": "障害者福祉事業",
+      "location": "茨城県桜川市",
+      "employeeCount": "150名",
+      "salary": "月給20.0万円〜28.6万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#2d6a4f"
+    }
+  },
+  {
+    "companyName": "株式会社 松栄電設",
+    "email": "hr13@company.example.jp",
+    "profile": {
+      "catchphrase": "電気工事施工管理技士・電気工事士",
+      "description": "電気エ事業",
+      "industry": "電気工事業",
+      "location": "茨城県坂東市",
+      "employeeCount": "19名",
+      "salary": "月給23.0万円〜50.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "未経験歓迎",
+      "logoColor": "#0077b6"
+    }
+  },
+  {
+    "companyName": "社会福祉法人 松井田福祉会",
+    "email": "hr14@company.example.jp",
+    "profile": {
+      "catchphrase": "介護業務（正社員）",
+      "description": "特別養護老人ホーム「楽聚」の運営。短期入所事業、デイサービス事業併設。規模入所８０人、短期入所１０人、デイサービス３０人の施設です",
+      "industry": "老人福祉・介護事業",
+      "location": "群馬県安中市",
+      "employeeCount": "74名",
+      "salary": "月給19.8万円〜25.2万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス",
+      "logoColor": "#4361ee"
+    }
+  },
+  {
+    "companyName": "ＺＥＮＮＥＩ株式会社",
+    "email": "hr15@company.example.jp",
+    "profile": {
+      "catchphrase": "児童に寄り添う自立支援業務",
+      "description": "・放課後等デイサービス・共同生活援助：障碍者グループホーム・生活介護",
+      "industry": "老人福祉・介護事業",
+      "location": "東京都八王子市",
+      "employeeCount": "15名",
+      "salary": "月給23.2万円〜29.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "成長志向,社会貢献",
+      "logoColor": "#e76f51"
+    }
+  },
+  {
+    "companyName": "有限会社 江原タイヤ",
+    "email": "hr16@company.example.jp",
+    "profile": {
+      "catchphrase": "法人営業【未経験ＯＫ】（日の出）中卒、高卒歓迎！",
+      "description": "自動車　トラック等のタイヤ。　　　　　　　　　　　　　　　　ホイール販売、卸売、修理、交換　　　　　　　　　　　　　　　出張販売。古夕イヤの回収、リサイクル。",
+      "industry": "他に分類されない小売業",
+      "location": "東京都西多摩郡",
+      "employeeCount": "37名",
+      "salary": "月給37.5万円〜37.5万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#5a189a"
+    }
+  },
+  {
+    "companyName": "宮本警報器 株式会社 十日町工場",
+    "email": "hr17@company.example.jp",
+    "profile": {
+      "catchphrase": "品質管理・製品検査",
+      "description": "自動車専用ホーン、リレー、ブザーなどの電気部品を主力製品として製造しています。近年では自動車業界で培った高い技術力を活かし、他業界へも進出しています。",
+      "industry": "自動車・同附属品製造業",
+      "location": "新潟県十日町",
+      "employeeCount": "104名",
+      "salary": "月給17.7万円〜24.6万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス,技術重視,未経験歓迎",
+      "logoColor": "#023e8a"
+    }
+  },
+  {
+    "companyName": "音頭金属 株式会社",
+    "email": "hr18@company.example.jp",
+    "profile": {
+      "catchphrase": "作業員（ユニットハウス整備・保守）福井営業所／フルパート",
+      "description": "一般建設業（プレハブ建築）・ユニットハウスの製造賃貸及び販売　金沢支店、福井（営）において仮設足場の施工賃貸販売　建設土木用諸機械・機材の販売及び賃貸ならびに修理",
+      "industry": "その他の物品賃貸業",
+      "location": "福井県福井市",
+      "employeeCount": "59名",
+      "salary": "月給21.6万円〜21.6万円",
+      "foundedYear": "",
+      "workStyle": "正社員以外\n正社員以外の名称\nフルタイムパート\n正社員登用の有無\nなし",
+      "culture": "安定志向",
+      "logoColor": "#ff6b6b"
+    }
+  },
+  {
+    "companyName": "タローファーム 株式会社",
+    "email": "hr19@company.example.jp",
+    "profile": {
+      "catchphrase": "養豚スタッフ（上田農場）",
+      "description": "繁殖・離乳・肥育を行う、母豚２２０頭の一貫生産農場です。県下トップクラスの経営規模であり、自動化された衛生的な設備で年間４０００頭の肉豚を生産しています。",
+      "industry": "畜産農業",
+      "location": "長野県上田市",
+      "employeeCount": "22名",
+      "salary": "月給20.0万円〜24.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "成長志向,未経験歓迎,自由な働き方",
+      "logoColor": "#495057"
+    }
+  },
+  {
+    "companyName": "社会福祉法人四徳会 特別養護老人ホーム グリーンヒル",
+    "email": "hr20@company.example.jp",
+    "profile": {
+      "catchphrase": "介護職員　≪トライアル雇用併用求人≫",
+      "description": "指定介護老人福祉施設・短期入所生活介護・通所介護・居宅介護支援事業。",
+      "industry": "老人福祉・介護事業",
+      "location": "長野県長野市",
+      "employeeCount": "129名",
+      "salary": "月給19.6万円〜24.8万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#f4a261"
+    }
+  },
+  {
+    "companyName": "医療法人社団 浩養会 （介護老人保健施設 メモリアル光陽）",
+    "email": "hr21@company.example.jp",
+    "profile": {
+      "catchphrase": "介護福祉士",
+      "description": "施設入所事業（定員１００名）、通所リハビリテーション事業（定員２２名）",
+      "industry": "老人福祉・介護事業",
+      "location": "岐阜県多治見市",
+      "employeeCount": "83名",
+      "salary": "月給23.4万円〜25.8万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス",
+      "logoColor": "#343a40"
+    }
+  },
+  {
+    "companyName": "株式会社からだラボくじら",
+    "email": "hr22@company.example.jp",
+    "profile": {
+      "catchphrase": "児童指導員／契約社員（清水）",
+      "description": "障害福祉サービス事業・一般相談支援事業・特定相談支援事業地域生活支援事業・障害児支援事業等を運営しております。",
+      "industry": "障害者福祉事業",
+      "location": "福岡県北九州市",
+      "employeeCount": "51名",
+      "salary": "月給21.2万円〜24.2万円",
+      "foundedYear": "",
+      "workStyle": "正社員以外\n正社員以外の名称\n契約社員（正社員登用あり）\n正社員登用の有無\nあり\n正社員登用の実績（過去３年間）\n１３名",
+      "culture": "成長志向,社会貢献",
+      "logoColor": "#7209b7"
+    }
+  },
+  {
+    "companyName": "社会福祉法人あしたば会 特別養護老人ホームサンフラワー",
+    "email": "hr23@company.example.jp",
+    "profile": {
+      "catchphrase": "介護職員／介護福祉士",
+      "description": "介護老人福祉施設・特別養護老人ホーム・デイサービスセンター他　　　『ＭＰ』",
+      "industry": "老人福祉・介護事業",
+      "location": "長崎県佐世保市",
+      "employeeCount": "90名",
+      "salary": "月給21.4万円〜25.1万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#0096c7"
+    }
+  },
+  {
+    "companyName": "株式会社 あおば交通",
+    "email": "hr24@company.example.jp",
+    "profile": {
+      "catchphrase": "貸切バスドライバー",
+      "description": "・貨物事業、ご遺体の搬送・霊柩業務。・旅客事業、主として冠婚葬祭のバス運行業務。・整備事業、グループ車両の整備業務。",
+      "industry": "一般貸切旅客自動車運送業",
+      "location": "群馬県前橋市",
+      "employeeCount": "37名",
+      "salary": "月給25.0万円〜35.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス,未経験歓迎",
+      "logoColor": "#d00000"
+    }
+  },
+  {
+    "companyName": "サコス 株式会社",
+    "email": "hr25@company.example.jp",
+    "profile": {
+      "catchphrase": "営業職／年間休日１２５日／千葉県浦安市／発電機レンタル",
+      "description": "（１）機械・機器のレンタル業（２）機械・機器等の輸出及び販売業",
+      "industry": "他に分類されない事業サービス業",
+      "location": "千葉県浦安市",
+      "employeeCount": "98名",
+      "salary": "月給21.1万円〜31.9万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス",
+      "logoColor": "#3a0ca3"
+    }
+  },
+  {
+    "companyName": "フィット工業株式会社",
+    "email": "hr26@company.example.jp",
+    "profile": {
+      "catchphrase": "鉄工・金属加工【キャリア形成】",
+      "description": "鉄骨工事、橋梁、製缶、設備架台製作アルミ・ステンレス製缶金物製作",
+      "industry": "鉄骨・鉄筋工事業",
+      "location": "長野県松本市",
+      "employeeCount": "13名",
+      "salary": "月給19.0万円〜22.5万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "成長志向,技術重視,未経験歓迎",
+      "logoColor": "#e63946"
+    }
+  },
+  {
+    "companyName": "株式会社 大野商会",
+    "email": "hr27@company.example.jp",
+    "profile": {
+      "catchphrase": "移動式クレーンオペレーター・トラック",
+      "description": "クレーン作業（移動式クレーンにて要請された現場にて揚量作業）鉄板養生リース一式（設置、運搬、撤去作業）",
+      "industry": "その他の物品賃貸業",
+      "location": "大阪府泉佐野市",
+      "employeeCount": "28名",
+      "salary": "月給29.0万円〜45.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#9b5de5"
+    }
+  },
+  {
+    "companyName": "松栄技建 株式会社",
+    "email": "hr28@company.example.jp",
+    "profile": {
+      "catchphrase": "現場サポートスタッフ／土木施工管理／未経験可／高卒以上可",
+      "description": "特殊土木工事業土木工事業",
+      "industry": "土木工事業（舗装工事業を除く）",
+      "location": "佐賀県佐賀市",
+      "employeeCount": "16名",
+      "salary": "月給22.4万円〜47.2万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向,成長志向,チームワーク",
+      "logoColor": "#2a9d8f"
+    }
+  },
+  {
+    "companyName": "道北協同飼料販売 株式会社 豊富営業所",
+    "email": "hr29@company.example.jp",
+    "profile": {
+      "catchphrase": "営業員",
+      "description": "飼料等販売業",
+      "industry": "農耕用品小売業",
+      "location": "北海道天塩郡",
+      "employeeCount": "13名",
+      "salary": "月給18.1万円〜26.7万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス",
+      "logoColor": "#560bad"
+    }
+  },
+  {
+    "companyName": "株式会社 メタル・ワ－クス",
+    "email": "hr30@company.example.jp",
+    "profile": {
+      "catchphrase": "金属工事作業員【経験不問】本社",
+      "description": "（第１工事部）建設金物工事、上下水道プラント工事、福祉・介護　　　　　　　機器開発（第２工事部）交通安全施設、道路標識柱製作",
+      "industry": "建設用・建築用金属製品製造業（製缶板金業を含む）",
+      "location": "岩手県滝沢市",
+      "employeeCount": "19名",
+      "salary": "月給18.2万円〜33.9万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "技術重視,未経験歓迎",
+      "logoColor": "#e85d04"
+    }
+  },
+  {
+    "companyName": "北日本工業 株式会社",
+    "email": "hr31@company.example.jp",
+    "profile": {
+      "catchphrase": "総務労務（管理職候補）",
+      "description": "電力用架線金物（電柱用足場ボルト、腕金、バンド各種等）の製造",
+      "industry": "金属素形材製品製造業",
+      "location": "宮城県加美郡",
+      "employeeCount": "69名",
+      "salary": "月給27.0万円〜33.5万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス",
+      "logoColor": "#6366f1"
+    }
+  },
+  {
+    "companyName": "株式会社 国際商事",
+    "email": "hr32@company.example.jp",
+    "profile": {
+      "catchphrase": "一般事務（正社員）　【高卒】",
+      "description": "石油製品販売",
+      "industry": "燃料小売業",
+      "location": "秋田県秋田市",
+      "employeeCount": "40名",
+      "salary": "月給19.0万円〜19.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#10b981"
+    }
+  },
+  {
+    "companyName": "ヤマコ総合物流 株式会社",
+    "email": "hr33@company.example.jp",
+    "profile": {
+      "catchphrase": "一般事務　　＊未経験者可",
+      "description": "木材、合板、家具、鉄骨、米、ライナーのトラックでの運送業。倉庫業。",
+      "industry": "一般貨物自動車運送業",
+      "location": "秋田県秋田市",
+      "employeeCount": "62名",
+      "salary": "月給18.0万円〜25.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "社会貢献",
+      "logoColor": "#f59e0b"
+    }
+  },
+  {
+    "companyName": "レンタショップカネコ株式会社",
+    "email": "hr34@company.example.jp",
+    "profile": {
+      "catchphrase": "営業職（事務備品のレンタル促進販売）【埼玉センター】急募",
+      "description": "建設関連会社へのユニットハウス・仮設トイレ・０Ａ機器等のレンタル・販売・修理。",
+      "industry": "産業用機械器具賃貸業",
+      "location": "埼玉県東松山市",
+      "employeeCount": "55名",
+      "salary": "月給26.4万円〜32.2万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#ec4899"
+    }
+  },
+  {
+    "companyName": "コスモ計測 株式会社",
+    "email": "hr35@company.example.jp",
+    "profile": {
+      "catchphrase": "測量技術者",
+      "description": "・測量業務　・計測業務　変位測定（自動計測、３Ｄ観測）",
+      "industry": "土木建築サービス業",
+      "location": "埼玉県所沢市",
+      "employeeCount": "8名",
+      "salary": "月給22.0万円〜32.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#06b6d4"
+    }
+  },
+  {
+    "companyName": "ＫＮ村田産業株式会社",
+    "email": "hr36@company.example.jp",
+    "profile": {
+      "catchphrase": "生産職（金属加工）【年間休日数：１２１日】",
+      "description": "釘とねじの製造。木造住宅用接合金物の防錆デュラルコート。木造住宅用接合金物の製造。",
+      "industry": "ブリキ缶・その他のめっき板等製品製造業",
+      "location": "埼玉県幸手市",
+      "employeeCount": "175名",
+      "salary": "月給23.0万円〜35.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス",
+      "logoColor": "#8b5cf6"
+    }
+  },
+  {
+    "companyName": "はあとねいる曳舟店",
+    "email": "hr37@company.example.jp",
+    "profile": {
+      "catchphrase": "ネイリスト／未経験歓迎♪",
+      "description": "ネイルサロン",
+      "industry": "美容業",
+      "location": "東京都墨田区",
+      "employeeCount": "3名",
+      "salary": "月給21.2万円〜33.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#f97316"
+    }
+  },
+  {
+    "companyName": "一般社団法人 神奈川県保健協会",
+    "email": "hr38@company.example.jp",
+    "profile": {
+      "catchphrase": "浄化槽の法定検査員",
+      "description": "厚生労働大臣登録簡易専用水道検査機関。また、神奈川県知事及び県内の各市長指定による小規模受水槽水道等検査機関。神奈川県知事指定の浄化槽検査機関。",
+      "industry": "その他の保健衛生",
+      "location": "神奈川県中郡",
+      "employeeCount": "17名",
+      "salary": "月給26.0万円〜30.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "成長志向,技術重視",
+      "logoColor": "#64748b"
+    }
+  },
+  {
+    "companyName": "社会福祉法人 金良会 特別養護老人ホーム 塚山ホーム",
+    "email": "hr39@company.example.jp",
+    "profile": {
+      "catchphrase": "居宅介護支援専門員（居宅介護支援）",
+      "description": "介護老人福祉施設",
+      "industry": "老人福祉・介護事業",
+      "location": "神奈川県横須賀市",
+      "employeeCount": "100名",
+      "salary": "月給20.2万円〜26.5万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス,社会貢献",
+      "logoColor": "#059669"
+    }
+  },
+  {
+    "companyName": "丸福工業 株式会社",
+    "email": "hr40@company.example.jp",
+    "profile": {
+      "catchphrase": "現場作業員／作業スタッフ●未経験者大歓迎！学歴資格不問●",
+      "description": "型枠大工工事業、とび土工工事業",
+      "industry": "とび・土工・コンクリート工事業",
+      "location": "神奈川県大和市",
+      "employeeCount": "41名",
+      "salary": "月給28.6万円〜40.8万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス,未経験歓迎,社会貢献",
+      "logoColor": "#dc2626"
+    }
+  },
+  {
+    "companyName": "昭栄産業 株式会社",
+    "email": "hr41@company.example.jp",
+    "profile": {
+      "catchphrase": "ルート営業（法人向け）／年間休日１２２日／高卒以上",
+      "description": "工作機械、産業用ロボット、油空圧機器、伝導機器、精密工具、環境機器、物流機器など、生産財関連品の専門商社",
+      "industry": "その他の機械器具卸売業",
+      "location": "新潟県新潟市",
+      "employeeCount": "45名",
+      "salary": "月給21.1万円〜31.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス,成長志向",
+      "logoColor": "#1e3a5f"
+    }
+  },
+  {
+    "companyName": "株式会社 協和",
+    "email": "hr42@company.example.jp",
+    "profile": {
+      "catchphrase": "営業　※経験者優遇",
+      "description": "測量業、建設コンサルタント業、補償コンサルタント業、二級建築士事務所",
+      "industry": "土木建築サービス業",
+      "location": "富山県高岡市",
+      "employeeCount": "42名",
+      "salary": "月給25.0万円〜30.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス",
+      "logoColor": "#2d6a4f"
+    }
+  },
+  {
+    "companyName": "有限会社 米山農産",
+    "email": "hr43@company.example.jp",
+    "profile": {
+      "catchphrase": "農作業技術者（大地を耕し農作業の真髄を体感して下さい）",
+      "description": "稲作・大豆・ハウス季節野菜・作業受託・漬け物加工・米加工品販売　等",
+      "industry": "農業サービス業（園芸サービス業を除く）",
+      "location": "富山県下新川郡",
+      "employeeCount": "8名",
+      "salary": "月給17.4万円〜30.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "未経験歓迎",
+      "logoColor": "#0077b6"
+    }
+  },
+  {
+    "companyName": "ネオシーズ 株式会社",
+    "email": "hr44@company.example.jp",
+    "profile": {
+      "catchphrase": "法人営業／土日祝休み／年休１２８日／教育サポート充実！",
+      "description": "安全衛生商品・食品衛生商品・環境対策商品、セーフティセキュリティ製品などの販売、業務請負事業を行っています。北陸をはじめ各地域で品質提供を第一に事業を展開しています。",
+      "industry": "他に分類されない小売業",
+      "location": "福井県敦賀市",
+      "employeeCount": "23名",
+      "salary": "月給30.0万円〜38.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス,成長志向,チームワーク",
+      "logoColor": "#4361ee"
+    }
+  },
+  {
+    "companyName": "株式会社 ラポール",
+    "email": "hr45@company.example.jp",
+    "profile": {
+      "catchphrase": "児童発達支援管理責任者・保育士・児童指導員【契約社員】",
+      "description": "障がいのある児童・生徒・幼児に対する支援　　　　　　　　　　　　　　　　　　　　　　　　　　　＊Ｍ",
+      "industry": "障害者福祉事業",
+      "location": "岐阜県各務原市",
+      "employeeCount": "20名",
+      "salary": "月給20.5万円〜25.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員以外\n正社員以外の名称\n契約社員\n正社員登用の有無\nあり\n正社員登用の実績（過去３年間）\n１名",
+      "culture": "ワークライフバランス,社会貢献",
+      "logoColor": "#e76f51"
+    }
+  },
+  {
+    "companyName": "長村工業 株式会社",
+    "email": "hr46@company.example.jp",
+    "profile": {
+      "catchphrase": "金属プレス加工",
+      "description": "刃物用ステンレスとしては日本最大級の豊富な在庫を使用し、家庭用及び工業用刃物、自転車部品、デジタルカメラ部品、機械部品等の手動及び自動ラインによるプレス加工を行っております。",
+      "industry": "洋食器・刃物・手道具・金物類製造業",
+      "location": "岐阜県関市",
+      "employeeCount": "20名",
+      "salary": "月給21.6万円〜29.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "成長志向",
+      "logoColor": "#5a189a"
+    }
+  },
+  {
+    "companyName": "株式会社 綜合自動車学校",
+    "email": "hr47@company.example.jp",
+    "profile": {
+      "catchphrase": "【ポルトガル語】自動車学校の教習インストラクター職",
+      "description": "・静岡県公安委員会指定自動車教習所・国土交通大臣認定講習機関（適性診断・指導講習）・静岡労働局長登録教習機関第７４号・国土交通省登録講習機関（ドローンスクール）",
+      "industry": "専修学校，各種学校",
+      "location": "静岡県浜松市",
+      "employeeCount": "63名",
+      "salary": "月給23.0万円〜27.5万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#023e8a"
+    }
+  },
+  {
+    "companyName": "社会福祉法人 みなみ福祉会",
+    "email": "hr48@company.example.jp",
+    "profile": {
+      "catchphrase": "児童指導員（みいな瑞穂教室）",
+      "description": "名古屋市南区・瑞穂区にて保育所等の児童福祉施設６施設を運営している社会福祉法人です。昭和２６年に最初の保育所を開園し、児童福祉分野で７０年以上の実績があります。",
+      "industry": "児童福祉事業",
+      "location": "愛知県名古屋市",
+      "employeeCount": "130名",
+      "salary": "月給23.2万円〜32.2万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス,成長志向,未経験歓迎",
+      "logoColor": "#ff6b6b"
+    }
+  },
+  {
+    "companyName": "社会福祉法人 とよた光の里",
+    "email": "hr49@company.example.jp",
+    "profile": {
+      "catchphrase": "介護職員（光の家）",
+      "description": "障がい者のあらゆるライフステージに対応する様々な福祉サービス事業や障がいに関する様々な相談に応じて必要な支援につなぐ相談事業を行っています。",
+      "industry": "障害者福祉事業",
+      "location": "愛知県豊田市",
+      "employeeCount": "140名",
+      "salary": "月給20.0万円〜27.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#495057"
+    }
+  },
+  {
+    "companyName": "社会福祉法人 ぬくもり福祉会",
+    "email": "hr50@company.example.jp",
+    "profile": {
+      "catchphrase": "事務員（法人本部事務局）",
+      "description": "知的障害を持つ利用者が、個人の尊厳を保持しつつ、自立した生活を地域社会において営むことができるよう支援することを目的として社会福祉事業を行います。",
+      "industry": "障害者福祉事業",
+      "location": "愛知県安城市",
+      "employeeCount": "147名",
+      "salary": "月給20.2万円〜27.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "社会貢献",
+      "logoColor": "#f4a261"
+    }
+  },
+  {
+    "companyName": "学童保育 どろんこクラブ",
+    "email": "hr51@company.example.jp",
+    "profile": {
+      "catchphrase": "指導員",
+      "description": "学童保育（下校後の小学生に対する生活指導）",
+      "industry": "社会教育",
+      "location": "愛知県春日井市",
+      "employeeCount": "5名",
+      "salary": "月給18.0万円〜18.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス,社会貢献",
+      "logoColor": "#343a40"
+    }
+  },
+  {
+    "companyName": "株式会社 タカハシ",
+    "email": "hr52@company.example.jp",
+    "profile": {
+      "catchphrase": "ａｕショップ販売スタッフ／並河店（トライアル雇用併用）",
+      "description": "紳士服（注文服）販売・携帯電話代理店・ソーラー発電",
+      "industry": "他に分類されない小売業",
+      "location": "京都府亀岡市",
+      "employeeCount": "57名",
+      "salary": "月給24.7万円〜45.5万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#7209b7"
+    }
+  },
+  {
+    "companyName": "京都府商工会連合会",
+    "email": "hr53@company.example.jp",
+    "profile": {
+      "catchphrase": "経営支援員／勤務地京都府内限定／未経験者歓迎／土日祝休み",
+      "description": "商工会及び商工業に関する指導業務等を行っています。",
+      "industry": "経済団体",
+      "location": "京都府京都市",
+      "employeeCount": "150名",
+      "salary": "月給22.8万円〜27.1万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス,成長志向,未経験歓迎",
+      "logoColor": "#0096c7"
+    }
+  },
+  {
+    "companyName": "株式会社 石坪",
+    "email": "hr54@company.example.jp",
+    "profile": {
+      "catchphrase": "営業",
+      "description": "医療機器・福祉用具の販売及びレンタル★会社案内・画像情報あり★",
+      "industry": "その他の機械器具卸売業",
+      "location": "京都府福知山市",
+      "employeeCount": "98名",
+      "salary": "月給26.6万円〜26.6万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#d00000"
+    }
+  },
+  {
+    "companyName": "飯野港運 株式会社",
+    "email": "hr55@company.example.jp",
+    "profile": {
+      "catchphrase": "荷役作業職員【７時間労働：終業時間１６：００】",
+      "description": "一般港湾運送事業の免許を擁し荷主や船社の依頼を受けここ京都舞鶴港に於いて、船舶からの貨物の陸揚げ、積み込み、受渡しやこれらに附帯にするサービスを一貫して提供しております。",
+      "industry": "港湾運送業",
+      "location": "京都府舞鶴市",
+      "employeeCount": "58名",
+      "salary": "月給20.5万円〜24.6万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#3a0ca3"
+    }
+  },
+  {
+    "companyName": "株式会社 オートック",
+    "email": "hr56@company.example.jp",
+    "profile": {
+      "catchphrase": "タイヤ・ホイール専門店スタッフ／未経験者歓迎【トラ併用】",
+      "description": "正真正銘のタイヤとホイールの専門店。タイヤとホイール以外の商品は取り扱っていません。新品・中古の販売・取付・仕入・預かり・基幹システム入力業務です。",
+      "industry": "自動車小売業",
+      "location": "京都府京都市",
+      "employeeCount": "10名",
+      "salary": "月給23.1万円〜32.4万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "ワークライフバランス,社会貢献",
+      "logoColor": "#e63946"
+    }
+  },
+  {
+    "companyName": "株式会社 ＧＲＷＰ",
+    "email": "hr57@company.example.jp",
+    "profile": {
+      "catchphrase": "建築塗装工",
+      "description": "総合建築、建築塗工事、各吹付工事、各防水工事、シーリング工事、左官工事、仮設足場、長尺シート等",
+      "industry": "塗装工事業",
+      "location": "大阪府八尾市",
+      "employeeCount": "3名",
+      "salary": "月給20.3万円〜35.0万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#9b5de5"
+    }
+  },
+  {
+    "companyName": "東邦工機 株式会社",
+    "email": "hr58@company.example.jp",
+    "profile": {
+      "catchphrase": "製造設備の保全・修理補助（工場内）",
+      "description": "◆ボルトクリッパやパイプレンチ等の”ＨＩＴ”作業工具を設計、製造し世界５５カ国に販売しているメーカー◆鍛造品の製造・販売",
+      "industry": "洋食器・刃物・手道具・金物類製造業",
+      "location": "奈良県大和郡",
+      "employeeCount": "87名",
+      "salary": "月給18.2万円〜27.8万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "安定志向",
+      "logoColor": "#2a9d8f"
+    }
+  },
+  {
+    "companyName": "社会福祉法人 福山中央福祉会",
+    "email": "hr59@company.example.jp",
+    "profile": {
+      "catchphrase": "事務（高卒）",
+      "description": "乳幼児保育（０～５歳）　ホリデー保育、延長保育促進事業、一時保育事業、地域活動事業",
+      "industry": "児童福祉事業",
+      "location": "広島県福山市",
+      "employeeCount": "49名",
+      "salary": "月給18.9万円〜18.9万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "社会貢献",
+      "logoColor": "#560bad"
+    }
+  },
+  {
+    "companyName": "社会福祉法人 あらくさ",
+    "email": "hr60@company.example.jp",
+    "profile": {
+      "catchphrase": "事務・生活支援員",
+      "description": "就労継続支援Ｂ型事業所において、障害のある方の働く場の提供及び生活介護事業所での日中生活支援、居宅介護、短期入所、地域活動支援センター、グループホームでの支援等。",
+      "industry": "障害者福祉事業",
+      "location": "広島県三次市",
+      "employeeCount": "36名",
+      "salary": "月給22.2万円〜27.3万円",
+      "foundedYear": "",
+      "workStyle": "正社員",
+      "culture": "社会貢献",
+      "logoColor": "#e85d04"
+    }
+  },
+  {
+    "companyName": "松山地方裁判所",
+    "email": "hr61@company.example.jp",
+    "profile": {
+      "catchphrase": "裁判所事務官（臨時的任用職員）",
+      "description": "民事及び刑事各裁判事務",
+      "industry": "司法機関",
+      "location": "愛媛県松山市",
+      "employeeCount": "180名",
+      "salary": "月給20.0万円〜26.8万円",
+      "foundedYear": "",
+      "workStyle": "正社員以外\n正社員以外の名称\n臨時的任用職員\n正社員登用の有無\nなし",
+      "culture": "ワークライフバランス",
+      "logoColor": "#6366f1"
+    }
+  }
+]
