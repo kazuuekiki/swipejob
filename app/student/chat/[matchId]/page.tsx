@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import NavBar from "@/components/NavBar";
@@ -22,16 +22,38 @@ export default function StudentChatPage() {
 
   const profileId = 1;
 
-  const fetchMessages = async () => {
+  const fetchMessages = useCallback(async () => {
     const res = await fetch(`/api/messages/${matchId}`);
     if (res.ok) setMessages(await res.json());
-  };
+  }, [matchId]);
 
   useEffect(() => {
     fetchMessages();
-    const interval = setInterval(fetchMessages, 5000);
-    return () => clearInterval(interval);
-  }, [matchId]);
+    let interval: ReturnType<typeof setInterval>;
+
+    const startPolling = () => {
+      interval = setInterval(fetchMessages, 5000);
+    };
+    const stopPolling = () => {
+      clearInterval(interval);
+    };
+
+    const handleVisibility = () => {
+      if (document.hidden) {
+        stopPolling();
+      } else {
+        fetchMessages();
+        startPolling();
+      }
+    };
+
+    startPolling();
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => {
+      stopPolling();
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
+  }, [fetchMessages]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -39,12 +61,13 @@ export default function StudentChatPage() {
 
   const sendMessage = async () => {
     if (!input.trim()) return;
+    const body = input;
+    setInput("");
     await fetch(`/api/messages/${matchId}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ body: input }),
+      body: JSON.stringify({ body }),
     });
-    setInput("");
     fetchMessages();
   };
 
@@ -72,7 +95,7 @@ export default function StudentChatPage() {
           {messages.map((msg) => {
             const isMine = msg.senderRole === "student" && msg.senderId === profileId;
             return (
-              <div key={msg.id} className={`flex ${isMine ? "justify-end" : "justify-start"} animate-fade-in`}>
+              <div key={msg.id} className={`flex ${isMine ? "justify-end" : "justify-start"}`}>
                 <div
                   className={`max-w-[75%] px-4 py-2.5 text-[14px] leading-relaxed ${
                     isMine

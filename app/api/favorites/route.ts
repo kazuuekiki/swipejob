@@ -9,7 +9,25 @@ export async function GET() {
   const { profileId } = getProfile(session, "student");
   const favorites = await prisma.favorite.findMany({
     where: { studentId: profileId },
-    include: { company: { include: { profile: true } } },
+    select: {
+      id: true,
+      companyId: true,
+      company: {
+        select: {
+          id: true,
+          companyName: true,
+          profile: {
+            select: {
+              catchphrase: true,
+              industry: true,
+              location: true,
+              salary: true,
+              logoColor: true,
+            },
+          },
+        },
+      },
+    },
   });
   return NextResponse.json(favorites);
 }

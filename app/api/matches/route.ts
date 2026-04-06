@@ -11,8 +11,21 @@ export async function GET() {
   if (role === "student") {
     const matches = await prisma.match.findMany({
       where: { studentId: profileId },
-      include: {
-        application: { include: { company: { include: { profile: true } } } },
+      select: {
+        id: true,
+        createdAt: true,
+        application: {
+          select: {
+            company: {
+              select: {
+                companyName: true,
+                profile: {
+                  select: { catchphrase: true, industry: true, logoColor: true },
+                },
+              },
+            },
+          },
+        },
       },
       orderBy: { createdAt: "desc" },
     });
@@ -20,8 +33,16 @@ export async function GET() {
   } else if (role === "company") {
     const matches = await prisma.match.findMany({
       where: { companyId: profileId },
-      include: {
-        application: { include: { student: true } },
+      select: {
+        id: true,
+        createdAt: true,
+        application: {
+          select: {
+            student: {
+              select: { id: true, name: true, school: true, bio: true },
+            },
+          },
+        },
       },
       orderBy: { createdAt: "desc" },
     });

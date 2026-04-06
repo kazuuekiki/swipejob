@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Heart, X } from "lucide-react";
 
@@ -24,13 +24,92 @@ interface SwipeCardProps {
 
 export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
   const [index, setIndex] = useState(0);
-  const [dragging, setDragging] = useState(false);
-  const [dragX, setDragX] = useState(0);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const likeRef = useRef<HTMLDivElement>(null);
+  const skipRef = useRef<HTMLDivElement>(null);
   const startX = useRef(0);
+  const currentX = useRef(0);
+  const isDragging = useRef(false);
   const hasDragged = useRef(false);
+  const rafId = useRef(0);
   const router = useRouter();
 
   const current = companies[index];
+
+  const updateCardTransform = useCallback(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    const dx = currentX.current;
+    const rotation = isDragging.current ? dx * 0.06 : 0;
+    const scale = isDragging.current ? 0.98 : 1;
+    el.style.transform = `translateX(${dx}px) rotate(${rotation}deg) scale(${scale})`;
+    el.style.transition = isDragging.current ? "none" : "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)";
+
+    if (likeRef.current) {
+      likeRef.current.style.opacity = String(isDragging.current && dx > 20 ? Math.min(1, (dx - 20) / 60) : 0);
+    }
+    if (skipRef.current) {
+      skipRef.current.style.opacity = String(isDragging.current && dx < -20 ? Math.min(1, (-dx - 20) / 60) : 0);
+    }
+  }, []);
+
+  const handleDragStart = useCallback((clientX: number) => {
+    startX.current = clientX;
+    currentX.current = 0;
+    hasDragged.current = false;
+    isDragging.current = true;
+  }, []);
+
+  const handleDragMove = useCallback((clientX: number) => {
+    if (!isDragging.current) return;
+    const dx = clientX - startX.current;
+    if (Math.abs(dx) > 5) hasDragged.current = true;
+    currentX.current = dx;
+    cancelAnimationFrame(rafId.current);
+    rafId.current = requestAnimationFrame(updateCardTransform);
+  }, [updateCardTransform]);
+
+  const handleDragEnd = useCallback(() => {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    const dx = currentX.current;
+
+    if (dx > 80) {
+      currentX.current = 0;
+      updateCardTransform();
+      onSwipe(companies[index]?.id, "like");
+      setIndex((i) => i + 1);
+    } else if (dx < -80) {
+      currentX.current = 0;
+      updateCardTransform();
+      onSwipe(companies[index]?.id, "skip");
+      setIndex((i) => i + 1);
+    } else if (!hasDragged.current && companies[index]) {
+      currentX.current = 0;
+      updateCardTransform();
+      router.push(`/companies/${companies[index].id}`);
+    } else {
+      currentX.current = 0;
+      updateCardTransform();
+    }
+  }, [index, companies, onSwipe, router, updateCardTransform]);
+
+  // Use document-level listeners for mouse to avoid missing mouseup outside card
+  const onMouseDown = useCallback((e: React.MouseEvent) => {
+    handleDragStart(e.clientX);
+    const onMove = (ev: MouseEvent) => handleDragMove(ev.clientX);
+    const onUp = () => {
+      handleDragEnd();
+      document.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseup", onUp);
+    };
+    document.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseup", onUp);
+  }, [handleDragStart, handleDragMove, handleDragEnd]);
+
+  useEffect(() => {
+    return () => cancelAnimationFrame(rafId.current);
+  }, []);
 
   if (!current) {
     return (
@@ -44,57 +123,16 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
     );
   }
 
-  const handleDragStart = (clientX: number) => {
-    startX.current = clientX;
-    hasDragged.current = false;
-    setDragging(true);
-  };
-
-  const handleDragMove = (clientX: number) => {
-    if (!dragging) return;
-    const dx = clientX - startX.current;
-    if (Math.abs(dx) > 5) hasDragged.current = true;
-    setDragX(dx);
-  };
-
-  const handleDragEnd = () => {
-    if (!dragging) return;
-    setDragging(false);
-    if (dragX > 80) {
-      triggerSwipe("like");
-    } else if (dragX < -80) {
-      triggerSwipe("skip");
-    } else if (!hasDragged.current) {
-      router.push(`/companies/${current.id}`);
-    }
-    setDragX(0);
-  };
-
-  const triggerSwipe = (action: "like" | "skip") => {
-    onSwipe(current.id, action);
-    setIndex((i) => i + 1);
-  };
-
   const logoColor = current.profile?.logoColor || "#6366f1";
-  const rotation = dragging ? `${dragX * 0.06}deg` : "0deg";
-  const scale = dragging ? 0.98 : 1;
-
-  const likeOpacity = dragging && dragX > 20 ? Math.min(1, (dragX - 20) / 60) : 0;
-  const skipOpacity = dragging && dragX < -20 ? Math.min(1, (-dragX - 20) / 60) : 0;
 
   return (
     <div className="flex flex-col items-center select-none h-[calc(100vh-72px)]">
       {/* Card */}
       <div
+        ref={cardRef}
         className="relative w-full max-w-sm cursor-pointer active:cursor-grabbing flex-1 min-h-0"
-        style={{
-          transform: `translateX(${dragX}px) rotate(${rotation}) scale(${scale})`,
-          transition: dragging ? "none" : "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-        }}
-        onMouseDown={(e) => handleDragStart(e.clientX)}
-        onMouseMove={(e) => handleDragMove(e.clientX)}
-        onMouseUp={handleDragEnd}
-        onMouseLeave={handleDragEnd}
+        style={{ transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)" }}
+        onMouseDown={onMouseDown}
         onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
         onTouchMove={(e) => handleDragMove(e.touches[0].clientX)}
         onTouchEnd={handleDragEnd}
@@ -103,24 +141,22 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
           {/* Logo area */}
           <div
             className="flex-1 flex items-center justify-center text-white relative min-h-0"
-            style={{
-              background: `linear-gradient(135deg, ${logoColor} 0%, ${logoColor}dd 100%)`,
-            }}
+            style={{ background: `linear-gradient(135deg, ${logoColor} 0%, ${logoColor}dd 100%)` }}
           >
             <span className="text-7xl font-bold opacity-90 drop-shadow-sm">
               {current.companyName.charAt(0)}
             </span>
-            {/* LIKE stamp */}
             <div
+              ref={likeRef}
               className="absolute top-6 left-6 border-[3px] border-[#FFD100] text-[#FFD100] text-2xl font-black px-4 py-1 rounded-2xl rotate-[-15deg] tracking-widest"
-              style={{ opacity: likeOpacity }}
+              style={{ opacity: 0 }}
             >
               LIKE
             </div>
-            {/* SKIP stamp */}
             <div
+              ref={skipRef}
               className="absolute top-6 right-6 border-[3px] border-white/70 text-white/70 text-2xl font-black px-4 py-1 rounded-2xl rotate-[15deg] tracking-widest"
-              style={{ opacity: skipOpacity }}
+              style={{ opacity: 0 }}
             >
               SKIP
             </div>
@@ -158,7 +194,7 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
       {/* Counter + Buttons */}
       <div className="flex items-center justify-center gap-6 py-3">
         <button
-          onClick={() => triggerSwipe("skip")}
+          onClick={() => { onSwipe(current.id, "skip"); setIndex((i) => i + 1); }}
           className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-gray-100/80 hover:scale-110 active:scale-90 transition-transform duration-200"
         >
           <X className="w-6 h-6 text-gray-400" />
@@ -169,7 +205,7 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
         </span>
 
         <button
-          onClick={() => triggerSwipe("like")}
+          onClick={() => { onSwipe(current.id, "like"); setIndex((i) => i + 1); }}
           className="w-14 h-14 rounded-full bg-gradient-to-br from-[#2774AE] to-[#1e5f94] flex items-center justify-center shadow-[0_4px_16px_rgba(39,116,174,0.3)] hover:scale-110 active:scale-90 transition-transform duration-200"
         >
           <Heart className="w-6 h-6 text-[#FFD100]" />
