@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 80" fill="none">
+  <!-- Briefcase icon -->
+  <g transform="translate(0, 5)">
+    <!-- Briefcase body -->
+    <rect x="8" y="24" width="52" height="38" rx="6" fill="#2774AE"/>
+    <!-- Briefcase handle -->
+    <path d="M24 24V18C24 14.686 26.686 12 30 12H38C41.314 12 44 14.686 44 18V24" stroke="#2774AE" stroke-width="4" fill="none"/>
+    <!-- Document behind (gold) -->
+    <rect x="20" y="16" width="36" height="28" rx="3" fill="#FFD100" transform="rotate(-8 38 30)"/>
+    <!-- Checkmark -->
+    <path d="M24 44L32 52L48 34" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <!-- Swipe waves -->
+    <path d="M6 56C6 56 2 52 2 46C2 40 8 38 8 38" stroke="#2774AE" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.6"/>
+    <path d="M12 60C12 60 6 55 6 48C6 41 14 38 14 38" stroke="#2774AE" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.4"/>
+  </g>
+  <!-- Text -->
+  <text x="74" y="56" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="900" font-size="48">
+    <tspan fill="#2774AE">Job</tspan><tspan fill="#FFD100">Swipe</tspan>
+  </text>
+</svg>

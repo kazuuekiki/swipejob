@@ -75,9 +75,7 @@ export default function HomePage() {
     <>
       <main className="pb-16 min-h-screen">
         <div className="flex items-center justify-center pt-2 pb-0">
-          <span className="text-[15px] font-black tracking-tight">
-            <span className="text-[#2774AE]">Job</span><span className="text-[#FFD100]">Swipe</span>
-          </span>
+          <img src="/logo.svg" alt="JobSwipe" className="h-8" />
         </div>
         <div className="px-4 pt-0 pb-0 h-[calc(100vh-90px)]">
           {loading ? (
