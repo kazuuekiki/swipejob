@@ -27,7 +27,7 @@ interface Profile {
   resumeUrl: string | null;
 }
 
-const EDUCATION_TYPES = ["高校", "専門学校", "短大", "大学", "大学院", "その他"];
+const EDUCATION_TYPES = ["高校", "大学"];
 const MBTI_TYPES = [
   "INTJ", "INTP", "ENTJ", "ENTP",
   "INFJ", "INFP", "ENFJ", "ENFP",
@@ -181,7 +181,7 @@ export default function StudentProfilePage() {
           </Section>
 
           {/* 学歴 */}
-          <Section title="学歴">
+          <Section title="最終学歴（高校または大学）">
             <Field label="学校名（最終卒業または在学中）" value={profile.school} onChange={(v) => handleChange("school", v)} required />
             <div>
               <label className="text-[11px] text-gray-400 font-medium mb-1.5 block tracking-wide">学歴区分</label>
