@@ -51,7 +51,16 @@ export default function StudentProfilePage() {
   useEffect(() => {
     fetch("/api/student/profile")
       .then((r) => r.json())
-      .then((d) => { setProfile(d); setSavedProfile(d); setLoading(false); });
+      .then((d) => {
+        const p: Profile = d ?? {
+          name: "", birthDate: null, school: "", graduationYear: 2026, graduationMonth: 3,
+          educationType: null, faculty: null, location: null, bio: null, selfPr: null,
+          gakuchika: null, desiredIndustry: null, desiredJob: null, desiredLocation: null,
+          skills: null, qualifications: null, internship: null, mbti: null,
+          photoUrl: null, resumeUrl: null,
+        };
+        setProfile(p); setSavedProfile(p); setLoading(false);
+      });
   }, []);
 
   const showToast = (msg: string) => {

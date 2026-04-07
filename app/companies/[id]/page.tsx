@@ -65,7 +65,7 @@ export default function CompanyDetailPage() {
       <>
         <NavBar />
         <div className="pt-14 flex items-center justify-center h-64">
-          <div className="w-8 h-8 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin" />
+          <div className="w-8 h-8 border-4 border-[#2774AE] border-t-transparent rounded-full animate-spin" />
         </div>
       </>
     );
@@ -76,7 +76,7 @@ export default function CompanyDetailPage() {
   return (
     <>
       <NavBar />
-      <main className="pt-14 max-w-md mx-auto pb-32">
+      <main className="pt-14 max-w-md mx-auto pb-40">
         <div
           className="h-48 flex items-end pb-4 px-4 relative"
           style={{ backgroundColor: logoColor }}
@@ -100,7 +100,7 @@ export default function CompanyDetailPage() {
           {company.profile?.salary && (
             <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
               <div className="flex items-center gap-2 mb-1">
-                <DollarSign className="w-4 h-4 text-indigo-500" />
+                <DollarSign className="w-4 h-4 text-[#2774AE]" />
                 <span className="text-xs text-gray-400">初任給</span>
               </div>
               <p className="font-bold text-gray-800 text-sm">{company.profile.salary}</p>
@@ -109,7 +109,7 @@ export default function CompanyDetailPage() {
           {company.profile?.location && (
             <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
               <div className="flex items-center gap-2 mb-1">
-                <MapPin className="w-4 h-4 text-indigo-500" />
+                <MapPin className="w-4 h-4 text-[#2774AE]" />
                 <span className="text-xs text-gray-400">勤務地</span>
               </div>
               <p className="font-bold text-gray-800 text-sm">{company.profile.location}</p>
@@ -118,7 +118,7 @@ export default function CompanyDetailPage() {
           {company.profile?.employeeCount && (
             <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
               <div className="flex items-center gap-2 mb-1">
-                <Users className="w-4 h-4 text-indigo-500" />
+                <Users className="w-4 h-4 text-[#2774AE]" />
                 <span className="text-xs text-gray-400">社員数</span>
               </div>
               <p className="font-bold text-gray-800 text-sm">{company.profile.employeeCount}</p>
@@ -127,7 +127,7 @@ export default function CompanyDetailPage() {
           {company.profile?.foundedYear && (
             <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
               <div className="flex items-center gap-2 mb-1">
-                <Calendar className="w-4 h-4 text-indigo-500" />
+                <Calendar className="w-4 h-4 text-[#2774AE]" />
                 <span className="text-xs text-gray-400">設立</span>
               </div>
               <p className="font-bold text-gray-800 text-sm">{company.profile.foundedYear}</p>
@@ -136,7 +136,7 @@ export default function CompanyDetailPage() {
           {company.profile?.workStyle && (
             <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 col-span-2">
               <div className="flex items-center gap-2 mb-1">
-                <Briefcase className="w-4 h-4 text-indigo-500" />
+                <Briefcase className="w-4 h-4 text-[#2774AE]" />
                 <span className="text-xs text-gray-400">働き方</span>
               </div>
               <p className="font-bold text-gray-800 text-sm">{company.profile.workStyle}</p>
@@ -155,13 +155,13 @@ export default function CompanyDetailPage() {
 
         {remaining !== null && (
           <p className="text-center text-xs text-gray-400 mb-4">
-            今日あと <span className="font-bold text-indigo-600">{remaining}</span> 件応募できます
+            今日あと <span className="font-bold text-[#2774AE]">{remaining}</span> 件応募できます
           </p>
         )}
       </main>
 
       {/* Fixed bottom buttons */}
-      <div className="fixed bottom-0 left-0 right-0 max-w-md mx-auto px-4 pb-6 pt-3 bg-white border-t border-gray-100">
+      <div className="fixed bottom-16 left-0 right-0 max-w-md mx-auto px-4 py-3 bg-white border-t border-gray-100 z-40">
         {applied ? (
           <div className="w-full bg-green-100 text-green-700 py-3 rounded-2xl font-semibold text-center">
             応募済み
@@ -183,7 +183,7 @@ export default function CompanyDetailPage() {
             </button>
             <button
               onClick={() => setShowApplyModal(true)}
-              className="flex-1 bg-indigo-600 text-white py-3 rounded-2xl font-bold text-base hover:bg-indigo-700"
+              className="flex-1 bg-[#2774AE] text-white py-3 rounded-2xl font-bold text-base hover:bg-[#1f5d8a]"
             >
               応募する
             </button>
@@ -205,7 +205,7 @@ export default function CompanyDetailPage() {
             />
             <button
               onClick={handleApply}
-              className="w-full bg-indigo-600 text-white py-3 rounded-2xl font-bold hover:bg-indigo-700"
+              className="w-full bg-[#2774AE] text-white py-3 rounded-2xl font-bold hover:bg-[#1f5d8a]"
             >
               応募する
             </button>
