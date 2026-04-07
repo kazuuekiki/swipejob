@@ -77,7 +77,7 @@ export default function HomePage() {
         <div className="flex items-center justify-center pt-2 pb-0">
           <img src="/logo.svg" alt="JobSwipe" className="h-8" />
         </div>
-        <div className="px-4 pt-0 pb-0 h-[calc(100vh-90px)]">
+        <div className="px-4 pt-0 pb-0 h-[calc(100vh-120px)]">
           {loading ? (
             <div className="flex items-center justify-center h-80">
               <div className="w-9 h-9 border-[3px] border-[#2774AE]/20 border-t-[#2774AE] rounded-full animate-spin" />

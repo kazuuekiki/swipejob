@@ -126,7 +126,7 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
   const logoColor = current.profile?.logoColor || "#6366f1";
 
   return (
-    <div className="flex flex-col items-center select-none h-[calc(100vh-72px)]">
+    <div className="flex flex-col items-center select-none h-full">
       {/* Card */}
       <div
         ref={cardRef}
