@@ -28,12 +28,33 @@ export default function HomePage() {
     fetch("/api/companies")
       .then((r) => r.json())
       .then((all: Company[]) => {
+        // Apply user filters from settings
+        let filters = { locations: [] as string[], industries: [] as string[], minAnnual: 0 };
+        try {
+          const raw = localStorage.getItem("filters");
+          if (raw) filters = { ...filters, ...JSON.parse(raw) };
+        } catch {}
+        const parseAnnualMin = (s: string): number => {
+          const m = s?.match(/(\d+)万円/);
+          return m ? parseInt(m[1]) : 0;
+        };
+        const filtered = all.filter((c) => {
+          const p = c.profile;
+          if (!p) return true;
+          if (filters.locations.length) {
+            const pref = p.location?.match(/^(東京都|北海道|(?:京都|大阪)府|.+?県)/)?.[1] || "";
+            if (!filters.locations.includes(pref)) return false;
+          }
+          if (filters.industries.length && !filters.industries.includes(p.industry)) return false;
+          if (filters.minAnnual > 0 && parseAnnualMin(p.annualSalary) < filters.minAnnual) return false;
+          return true;
+        });
         const swiped = getSwiped();
-        if (swiped.length >= all.length) {
+        if (swiped.length >= filtered.length) {
           clearSwiped();
-          setCompanies(all);
+          setCompanies(filtered);
         } else {
-          setCompanies(all.filter((c) => !swiped.includes(c.id)));
+          setCompanies(filtered.filter((c) => !swiped.includes(c.id)));
         }
         setLoading(false);
       });

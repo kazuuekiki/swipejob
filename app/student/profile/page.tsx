@@ -45,6 +45,8 @@ export default function StudentProfilePage() {
   const [saving, setSaving] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [showLeaveDialog, setShowLeaveDialog] = useState(false);
+  const [filterOptions, setFilterOptions] = useState<{ locations: string[]; industries: string[] }>({ locations: [], industries: [] });
+  const [filters, setFilters] = useState<{ locations: string[]; industries: string[]; minAnnual: number }>({ locations: [], industries: [], minAnnual: 0 });
 
   const hasChanges = profile && savedProfile && JSON.stringify(profile) !== JSON.stringify(savedProfile);
 
@@ -61,7 +63,54 @@ export default function StudentProfilePage() {
         };
         setProfile(p); setSavedProfile(p); setLoading(false);
       });
+    // Load saved filters
+    try {
+      const raw = localStorage.getItem("filters");
+      if (raw) setFilters({ locations: [], industries: [], minAnnual: 0, ...JSON.parse(raw) });
+    } catch {}
+    // Load available filter options from companies
+    fetch("/api/companies")
+      .then((r) => r.json())
+      .then((cs: any[]) => {
+        const locs = new Set<string>();
+        const inds = new Set<string>();
+        for (const c of cs) {
+          const loc = c.profile?.location;
+          const ind = c.profile?.industry;
+          if (loc) {
+            // Extract prefecture only
+            const m = loc.match(/^(東京都|北海道|(?:京都|大阪)府|.+?県)/);
+            if (m) locs.add(m[1]);
+          }
+          if (ind) inds.add(ind);
+        }
+        setFilterOptions({
+          locations: [...locs].sort(),
+          industries: [...inds].sort(),
+        });
+      });
   }, []);
+
+  const toggleFilter = (key: "locations" | "industries", value: string) => {
+    setFilters((f) => {
+      const arr = f[key].includes(value) ? f[key].filter((v) => v !== value) : [...f[key], value];
+      const next = { ...f, [key]: arr };
+      localStorage.setItem("filters", JSON.stringify(next));
+      return next;
+    });
+  };
+  const setMinAnnual = (v: number) => {
+    setFilters((f) => {
+      const next = { ...f, minAnnual: v };
+      localStorage.setItem("filters", JSON.stringify(next));
+      return next;
+    });
+  };
+  const clearFilters = () => {
+    const next = { locations: [], industries: [], minAnnual: 0 };
+    setFilters(next);
+    localStorage.setItem("filters", JSON.stringify(next));
+  };
 
   const showToast = (msg: string) => {
     setToast(msg);
@@ -257,6 +306,69 @@ export default function StudentProfilePage() {
             <Field label="スキル" value={profile.skills || ""} onChange={(v) => handleChange("skills", v || null)} placeholder="例: リーダーシップ, Python, Excel" />
             <Field label="資格" value={profile.qualifications || ""} onChange={(v) => handleChange("qualifications", v || null)} placeholder="例: TOEIC 800, 基本情報技術者" />
             <TextArea label="アルバイト等経験" value={profile.internship || ""} onChange={(v) => handleChange("internship", v || null)} placeholder="例）カフェのバリスタとして2年間勤務。新人教育を担当し、マニュアルの整備とOJT制度を導入。チーム全体の接客品質向上に貢献しました。" />
+          </Section>
+
+          {/* 絞り込み設定 */}
+          <Section title="カードの絞り込み設定">
+            <p className="text-[11px] text-gray-400 -mt-2">ホーム画面に表示される企業を地域・業界・年収で絞り込めます</p>
+
+            <div>
+              <label className="text-[11px] text-gray-400 font-medium mb-1.5 block tracking-wide">地域</label>
+              <div className="flex flex-wrap gap-1.5">
+                {filterOptions.locations.length === 0 && <span className="text-[11px] text-gray-300">読み込み中...</span>}
+                {filterOptions.locations.map((loc) => {
+                  const active = filters.locations.includes(loc);
+                  return (
+                    <button
+                      key={loc}
+                      onClick={() => toggleFilter("locations", loc)}
+                      className={`px-3 py-1.5 rounded-full text-[11px] font-medium border transition-all ${active ? "bg-[#2774AE] text-white border-[#2774AE]" : "bg-white text-gray-600 border-gray-200 hover:border-[#2774AE]/30"}`}
+                    >
+                      {loc}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div>
+              <label className="text-[11px] text-gray-400 font-medium mb-1.5 block tracking-wide">業界</label>
+              <div className="flex flex-wrap gap-1.5">
+                {filterOptions.industries.length === 0 && <span className="text-[11px] text-gray-300">読み込み中...</span>}
+                {filterOptions.industries.map((ind) => {
+                  const active = filters.industries.includes(ind);
+                  return (
+                    <button
+                      key={ind}
+                      onClick={() => toggleFilter("industries", ind)}
+                      className={`px-3 py-1.5 rounded-full text-[11px] font-medium border transition-all ${active ? "bg-[#2774AE] text-white border-[#2774AE]" : "bg-white text-gray-600 border-gray-200 hover:border-[#2774AE]/30"}`}
+                    >
+                      {ind}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div>
+              <label className="text-[11px] text-gray-400 font-medium mb-1.5 block tracking-wide">最低年収（万円）: {filters.minAnnual}万円</label>
+              <input
+                type="range"
+                min={0}
+                max={800}
+                step={50}
+                value={filters.minAnnual}
+                onChange={(e) => setMinAnnual(Number(e.target.value))}
+                className="w-full accent-[#2774AE]"
+              />
+            </div>
+
+            <button
+              onClick={clearFilters}
+              className="text-[11px] text-gray-400 hover:text-red-500 transition-colors"
+            >
+              絞り込みをクリア
+            </button>
           </Section>
 
           {/* レジュメ */}
