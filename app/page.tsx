@@ -75,8 +75,14 @@ export default function HomePage() {
   return (
     <>
       <main className="pb-16 min-h-screen">
-        <div className="flex items-center justify-center pt-2 pb-0">
+        <div className="relative flex items-center justify-center pt-2 pb-0">
           <img src="/logo.svg" alt="JobSwipe" className="h-8" />
+          <a
+            href="/api/auth/signin"
+            className="absolute right-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-full bg-[#2774AE] text-white text-[11px] font-bold shadow-[0_2px_8px_rgba(39,116,174,0.25)] hover:bg-[#1f5d8a]"
+          >
+            ログイン
+          </a>
         </div>
         <div className="px-4 pt-0 pb-0 h-[calc(100vh-120px)]">
           {loading ? (
