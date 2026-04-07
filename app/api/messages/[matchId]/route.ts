@@ -21,7 +21,7 @@ export async function POST(
   { params }: { params: Promise<{ matchId: string }> }
 ) {
   const session = await getServerSession(authOptions);
-  const { profileId, role } = getProfile(session, "student");
+  const { profileId, role } = await getProfile(session, "student");
 
   const { matchId } = await params;
   const { body } = await req.json();

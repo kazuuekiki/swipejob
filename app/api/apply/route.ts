@@ -6,7 +6,13 @@ import { getProfile } from "@/lib/guest";
 
 export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
-  const { profileId } = getProfile(session, "student");
+  if (!session?.user) {
+    return NextResponse.json(
+      { error: "応募にはログインが必要です", requiresAuth: true },
+      { status: 401 }
+    );
+  }
+  const { profileId } = await getProfile(session, "student");
   const { companyId, message } = await req.json();
 
   if (!companyId) {

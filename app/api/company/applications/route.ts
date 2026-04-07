@@ -6,7 +6,7 @@ import { getProfile } from "@/lib/guest";
 
 export async function GET() {
   const session = await getServerSession(authOptions);
-  const { profileId } = getProfile(session, "company");
+  const { profileId } = await getProfile(session, "company");
   const applications = await prisma.application.findMany({
     where: { companyId: profileId },
     include: { student: true },
@@ -17,7 +17,7 @@ export async function GET() {
 
 export async function PATCH(req: NextRequest) {
   const session = await getServerSession(authOptions);
-  const { profileId: companyId } = getProfile(session, "company");
+  const { profileId: companyId } = await getProfile(session, "company");
   const { applicationId, action } = await req.json();
 
   const application = await prisma.application.findUnique({

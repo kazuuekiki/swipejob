@@ -6,7 +6,7 @@ import { getProfile } from "@/lib/guest";
 
 export async function GET() {
   const session = await getServerSession(authOptions);
-  const { profileId } = getProfile(session, "student");
+  const { profileId } = await getProfile(session, "student");
 
   const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
   const count = await prisma.application.count({

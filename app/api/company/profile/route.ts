@@ -6,7 +6,7 @@ import { getProfile } from "@/lib/guest";
 
 export async function GET() {
   const session = await getServerSession(authOptions);
-  const { profileId: companyId } = getProfile(session, "company");
+  const { profileId: companyId } = await getProfile(session, "company");
   const company = await prisma.company.findUnique({
     where: { id: companyId },
     include: { profile: true },
@@ -16,7 +16,7 @@ export async function GET() {
 
 export async function PATCH(req: NextRequest) {
   const session = await getServerSession(authOptions);
-  const { profileId: companyId } = getProfile(session, "company");
+  const { profileId: companyId } = await getProfile(session, "company");
   const data = await req.json();
 
   await prisma.companyProfile.upsert({

@@ -6,7 +6,7 @@ import { getProfile } from "@/lib/guest";
 
 export async function GET() {
   const session = await getServerSession(authOptions);
-  const { profileId } = getProfile(session, "student");
+  const { profileId } = await getProfile(session, "student");
   const favorites = await prisma.favorite.findMany({
     where: { studentId: profileId },
     select: {
@@ -34,7 +34,7 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
-  const { profileId } = getProfile(session, "student");
+  const { profileId } = await getProfile(session, "student");
   const { companyId } = await req.json();
 
   const existing = await prisma.favorite.findUnique({

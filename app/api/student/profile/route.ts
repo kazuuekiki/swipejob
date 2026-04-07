@@ -6,7 +6,7 @@ import { getProfile } from "@/lib/guest";
 
 export async function GET() {
   const session = await getServerSession(authOptions);
-  const { profileId } = getProfile(session, "student");
+  const { profileId } = await getProfile(session, "student");
   const profile = await prisma.studentProfile.findUnique({
     where: { id: profileId },
   });
@@ -15,7 +15,7 @@ export async function GET() {
 
 export async function PATCH(req: NextRequest) {
   const session = await getServerSession(authOptions);
-  const { profileId } = getProfile(session, "student");
+  const { profileId } = await getProfile(session, "student");
   const data = await req.json();
 
   // Only allow updating these fields

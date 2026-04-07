@@ -6,7 +6,7 @@ import { getProfile } from "@/lib/guest";
 
 export async function GET() {
   const session = await getServerSession(authOptions);
-  const { profileId, role } = getProfile(session);
+  const { profileId, role } = await getProfile(session);
 
   if (role === "student") {
     const matches = await prisma.match.findMany({
