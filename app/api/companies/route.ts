@@ -14,6 +14,7 @@ export async function GET() {
           industry: true,
           culture: true,
           salary: true,
+          annualSalary: true,
           logoColor: true,
         },
       },

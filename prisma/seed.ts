@@ -56,6 +56,18 @@ function formatSalary(min: string, max: string): string {
   return `月給〜${(smax / 10000).toFixed(1)}万円`;
 }
 
+function formatAnnualSalary(min: string, max: string): string {
+  const smin = parseInt(min);
+  const smax = parseInt(max);
+  if (!smin && !smax) return "";
+  // Annual = monthly * 12 (bonuses not reliably parseable from CSV)
+  const amin = smin ? Math.round((smin * 12) / 10000) : 0;
+  const amax = smax ? Math.round((smax * 12) / 10000) : 0;
+  if (amin && amax) return `年収${amin}万円〜${amax}万円`;
+  if (amin) return `年収${amin}万円〜`;
+  return `年収〜${amax}万円`;
+}
+
 function extractEmployees(emp: string): string {
   if (!emp) return "";
   const m = emp.match(/(\d[\d,]*)\s*人/);
@@ -80,6 +92,7 @@ interface CompanyData {
     location: string;
     employeeCount: string;
     salary: string;
+    annualSalary: string;
     foundedYear: string;
     workStyle: string;
     culture: string;
@@ -117,6 +130,7 @@ function loadCompaniesFromCsv(): CompanyData[] {
         location: extractCity(r.location),
         employeeCount: extractEmployees(r.employees),
         salary: formatSalary(r.salary_min, r.salary_max),
+        annualSalary: formatAnnualSalary(r.salary_min, r.salary_max),
         foundedYear: "",
         workStyle: (r.employment_type || "").trim(),
         culture: guessCulture(r),

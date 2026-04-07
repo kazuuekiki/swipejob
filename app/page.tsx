@@ -9,6 +9,7 @@ interface Company {
   profile: {
     catchphrase: string;
     salary: string;
+    annualSalary: string;
     location: string;
     employeeCount: string;
     industry: string;

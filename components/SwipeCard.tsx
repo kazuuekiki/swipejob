@@ -9,6 +9,7 @@ interface Company {
   profile: {
     catchphrase: string;
     salary: string;
+    annualSalary: string;
     location: string;
     employeeCount: string;
     industry: string;
@@ -171,6 +172,11 @@ export default function SwipeCard({ companies, onSwipe }: SwipeCardProps) {
               </p>
             )}
             <div className="flex flex-wrap gap-1.5">
+              {current.profile?.annualSalary && (
+                <span className="bg-[#FFD100]/10 border border-[#FFD100]/30 px-2.5 py-1 rounded-full text-[11px] text-[#8a6d00] font-semibold">
+                  💴 {current.profile.annualSalary}
+                </span>
+              )}
               {current.profile?.location && (
                 <span className="bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full text-[11px] text-gray-500 font-medium">
                   📍 {current.profile.location}

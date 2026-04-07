@@ -75,6 +75,7 @@ model CompanyProfile {
   location      String @default("")
   employeeCount String @default("")
   salary        String @default("")
+  annualSalary  String @default("") // 年収範囲
   catchphrase   String @default("")
   foundedYear   String @default("")
   workStyle     String @default("")
