@@ -1,0 +1,17 @@
+POSTGRES_PRISMA_URL=postgresql://neondb_owner:npg_oYF5mvXSlx2N@ep-green-mountain-am44ezq2-pooler.c-5.us-east-1.aws.neon.tech/neondb?channel_binding=require&connect_timeout=15&sslmode=require
+POSTGRES_URL_NON_POOLING=postgresql://neondb_owner:npg_oYF5mvXSlx2N@ep-green-mountain-am44ezq2.c-5.us-east-1.aws.neon.tech/neondb?channel_binding=require&sslmode=require
+POSTGRES_URL=postgresql://neondb_owner:npg_oYF5mvXSlx2N@ep-green-mountain-am44ezq2-pooler.c-5.us-east-1.aws.neon.tech/neondb?channel_binding=require&sslmode=require
+DATABASE_URL=postgresql://neondb_owner:npg_oYF5mvXSlx2N@ep-green-mountain-am44ezq2-pooler.c-5.us-east-1.aws.neon.tech/neondb?channel_binding=require&sslmode=require
+DATABASE_URL_UNPOOLED=postgresql://neondb_owner:npg_oYF5mvXSlx2N@ep-green-mountain-am44ezq2.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require
+POSTGRES_HOST=ep-green-mountain-am44ezq2-pooler.c-5.us-east-1.aws.neon.tech
+POSTGRES_DATABASE=neondb
+POSTGRES_USER=neondb_owner
+POSTGRES_PASSWORD=npg_oYF5mvXSlx2N
+PGHOST=ep-green-mountain-am44ezq2-pooler.c-5.us-east-1.aws.neon.tech
+PGHOST_UNPOOLED=ep-green-mountain-am44ezq2.c-5.us-east-1.aws.neon.tech
+PGDATABASE=neondb
+PGUSER=neondb_owner
+PGPASSWORD=npg_oYF5mvXSlx2N
+NEON_PROJECT_ID=winter-poetry-23199669
+NEXTAUTH_SECRET=swipejob-secret-key-2024-vercel
+NEXTAUTH_URL=https://swipejob-v2.vercel.app

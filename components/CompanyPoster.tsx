@@ -78,7 +78,7 @@ const PALETTES: Record<
     bg: "#0f1f33",
     sub: "#4299e1",
     label: "MANUFACTURING",
-    emoji: "🏭",
+    emoji: "\u{1F3ED}",
   },
   construction: {
     from: "#7c5e10",
@@ -86,7 +86,7 @@ const PALETTES: Record<
     bg: "#3d2e08",
     sub: "#f6ad3e",
     label: "CONSTRUCTION",
-    emoji: "🏗️",
+    emoji: "\u{1F3D7}\u{FE0F}",
   },
   tech: {
     from: "#1a365d",
@@ -94,7 +94,7 @@ const PALETTES: Record<
     bg: "#0a1929",
     sub: "#63b3ed",
     label: "TECHNOLOGY",
-    emoji: "💻",
+    emoji: "\u{1F4BB}",
   },
   food: {
     from: "#9b2c2c",
@@ -102,7 +102,7 @@ const PALETTES: Record<
     bg: "#4a1717",
     sub: "#fc8181",
     label: "FOOD & BEVERAGE",
-    emoji: "🍱",
+    emoji: "\u{1F371}",
   },
   medical: {
     from: "#234e52",
@@ -110,7 +110,7 @@ const PALETTES: Record<
     bg: "#0f2628",
     sub: "#4fd1c5",
     label: "HEALTHCARE",
-    emoji: "🏥",
+    emoji: "\u{1F3E5}",
   },
   logistics: {
     from: "#2d3748",
@@ -118,7 +118,7 @@ const PALETTES: Record<
     bg: "#171c25",
     sub: "#a0aec0",
     label: "LOGISTICS",
-    emoji: "🚚",
+    emoji: "\u{1F69A}",
   },
   retail: {
     from: "#702459",
@@ -126,7 +126,7 @@ const PALETTES: Record<
     bg: "#3a1230",
     sub: "#ed64a6",
     label: "RETAIL",
-    emoji: "🛍️",
+    emoji: "\u{1F6CD}\u{FE0F}",
   },
   agri: {
     from: "#22543d",
@@ -134,7 +134,7 @@ const PALETTES: Record<
     bg: "#0f2a1d",
     sub: "#68d391",
     label: "AGRICULTURE",
-    emoji: "🌾",
+    emoji: "\u{1F33E}",
   },
   finance: {
     from: "#1a202c",
@@ -142,7 +142,7 @@ const PALETTES: Record<
     bg: "#0d1117",
     sub: "#cbd5e0",
     label: "FINANCE",
-    emoji: "🏦",
+    emoji: "\u{1F3E6}",
   },
   realestate: {
     from: "#553c9a",
@@ -150,7 +150,7 @@ const PALETTES: Record<
     bg: "#2a1d4d",
     sub: "#b794f4",
     label: "REAL ESTATE",
-    emoji: "🏘️",
+    emoji: "\u{1F3D8}\u{FE0F}",
   },
   education: {
     from: "#744210",
@@ -158,7 +158,7 @@ const PALETTES: Record<
     bg: "#3a2108",
     sub: "#f6ad55",
     label: "EDUCATION",
-    emoji: "📚",
+    emoji: "\u{1F4DA}",
   },
   service: {
     from: "#2774AE",
@@ -166,7 +166,7 @@ const PALETTES: Record<
     bg: "#0f3554",
     sub: "#90cdf4",
     label: "SERVICE",
-    emoji: "✨",
+    emoji: "\u{2728}",
   },
 };
 
@@ -546,7 +546,7 @@ export default function CompanyPoster({ company }: { company: PosterCompany }) {
             fontWeight="600"
             fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', sans-serif"
           >
-            📍 {profile.location}
+            {"\uD83D\uDCCD"} {profile.location}
           </text>
         </g>
       )}
