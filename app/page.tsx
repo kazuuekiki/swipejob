@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { Heart, Send } from "lucide-react";
 import NavBar from "@/components/NavBar";
 import SwipeCard from "@/components/SwipeCard";
 
@@ -28,7 +30,6 @@ export default function HomePage() {
     fetch("/api/companies")
       .then((r) => r.json())
       .then((all: Company[]) => {
-        // Apply user filters from settings
         let filters = { locations: [] as string[], industries: [] as string[], minAnnual: 0 };
         try {
           const raw = localStorage.getItem("filters");
@@ -96,14 +97,22 @@ export default function HomePage() {
   return (
     <>
       <main className="pb-16 min-h-screen">
-        <div className="relative flex items-center justify-center pt-2 pb-0">
-          <img src="/logo.svg" alt="JobSwipe" className="h-8" />
-          <a
-            href="/api/auth/signin"
-            className="absolute right-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-full bg-[#2774AE] text-white text-[11px] font-bold shadow-[0_2px_8px_rgba(39,116,174,0.25)] hover:bg-[#1f5d8a]"
+        <div className="relative flex items-center justify-between px-3 pt-2 pb-0">
+          <Link
+            href="/student/favorites"
+            aria-label="気になる"
+            className="w-9 h-9 rounded-full bg-white border border-gray-100/80 flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:bg-[#2774AE]/5 transition-colors"
           >
-            ログイン
-          </a>
+            <Heart className="w-[18px] h-[18px] text-pink-500" strokeWidth={2.2} />
+          </Link>
+          <img src="/logo.svg" alt="JobSwipe" className="h-8" />
+          <Link
+            href="/student/applications"
+            aria-label="応募履歴"
+            className="w-9 h-9 rounded-full bg-white border border-gray-100/80 flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:bg-[#2774AE]/5 transition-colors"
+          >
+            <Send className="w-[17px] h-[17px] text-[#2774AE]" strokeWidth={2.2} />
+          </Link>
         </div>
         <div className="px-4 pt-0 pb-0 h-[calc(100vh-120px)]">
           {loading ? (

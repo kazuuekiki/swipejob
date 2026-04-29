@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import NavBar from "@/components/NavBar";
 import { Heart, ArrowLeft, MapPin, Users, DollarSign, Calendar, Briefcase } from "lucide-react";
+import CompanyPoster from "@/components/CompanyPoster";
 
 interface Company {
   id: number;
@@ -17,6 +18,7 @@ interface Company {
     catchphrase: string;
     foundedYear: string;
     workStyle: string;
+    culture?: string;
     logoColor: string;
   } | null;
 }
@@ -71,29 +73,18 @@ export default function CompanyDetailPage() {
     );
   }
 
-  const logoColor = company.profile?.logoColor || "#6366f1";
-
   return (
     <>
       <NavBar />
       <main className="pt-14 max-w-md mx-auto pb-40">
-        <div
-          className="h-48 flex items-end pb-4 px-4 relative"
-          style={{ backgroundColor: logoColor }}
-        >
+        <div className="h-56 relative overflow-hidden">
+          <CompanyPoster company={company} />
           <button
             onClick={() => router.back()}
-            className="absolute top-4 left-4 w-9 h-9 bg-white/20 backdrop-blur rounded-full flex items-center justify-center text-white"
+            className="absolute top-4 left-4 w-9 h-9 bg-black/30 backdrop-blur rounded-full flex items-center justify-center text-white z-10"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <div className="text-white">
-            <p className="text-xs text-white/70 mb-1">{company.profile?.industry}</p>
-            <h1 className="text-2xl font-black">{company.companyName}</h1>
-            {company.profile?.catchphrase && (
-              <p className="text-sm text-white/80 mt-1">{company.profile.catchphrase}</p>
-            )}
-          </div>
         </div>
 
         <div className="grid grid-cols-2 gap-3 px-4 py-4">
