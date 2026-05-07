@@ -12,6 +12,7 @@
     "db:setup": "npm run db:migrate && npm run db:seed",
     "csv:sync": "node scripts/sync-csv.js",
     "signals:export": "tsx scripts/export-signals.ts",
+    "signals:smoke": "tsx scripts/smoke-test-signals.ts",
     "scrape:cycle": "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/full-cycle.ps1"
   },
   "prisma": {

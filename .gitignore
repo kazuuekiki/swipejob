@@ -43,7 +43,15 @@ next-env.d.ts
 /app/generated/prisma
 dev.db
 dev.db-journal
-.claude/
+
+# Cowork / Claude Code: share settings.json across team, ignore personal/local files
+.claude/settings.local.json
+.claude/.credentials.json
+.claude/agents/
+
+# Auto-generated signal files (rebuilt by `npm run signals:export`)
+/prisma/signals.json
+/prisma/signals.smoke.json
 
 .vercel
 .env*.local

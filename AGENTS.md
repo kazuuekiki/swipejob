@@ -82,7 +82,21 @@ The scraper (`C:\GitProject\スクレイパー製作\`) auto-improves based on w
 
 All five steps run in one shot via `npm run scrape:cycle` (`scripts/full-cycle.ps1`).
 
-The result: as students swipe more, the scraper gradually focuses on the kinds of companies they actually like — without any manual tuning.
+### Signal quality safeguards
+
+The aggregation in `scripts/export-signals.ts` is intentionally conservative:
+
+| Mechanism | Effect |
+|---|---|
+| **Event weighting** — apply (3.0) > favorite (2.0) > swipe-like (1.0) | Commitment-level signals dominate over casual swipes |
+| **Recency decay** — half-life 30 days | A like from 60 days ago contributes 25% of a like today |
+| **Base keyword floor** — `BASE_KEYWORD_FLOOR = 0.4` | `高卒` etc. always retain at least 0.4 weight, preserving exploration |
+| **Signal keyword cap** — `SIGNAL_KEYWORD_CAP = 0.6` | A user-derived keyword can never outweigh the base keyword `高卒 (1.0)` |
+| **Volume penalty** — `score = positiveRate × log(1 + n)` | Tiny samples cannot create runaway preferences |
+
+Run `tsx scripts/smoke-test-signals.ts` to verify these properties offline (no DB needed).
+
+The result: as students swipe more, the scraper gradually focuses on the kinds of companies they actually like — without ever fully closing the door on broader keywords.
 
 ## Validation plan (next 6–8 weeks)
 
