@@ -41,6 +41,8 @@ Founder: solo builder.
 | `prisma/seed.ts` | Reads `prisma/collected.csv`, upserts companies + students |
 | `prisma/collected.csv` | Source of company cards — copy of scraper output |
 | `scripts/sync-csv.js` | `npm run csv:sync` copies latest scraper CSV into the repo |
+| `scripts/export-signals.ts` | `npm run signals:export` aggregates user feedback → `prisma/signals.json` + scraper dir |
+| `scripts/full-cycle.ps1` | `npm run scrape:cycle` runs the full feedback loop (signals → scrape → sync → seed → push) |
 | `lib/guest.ts` | Guest profile resolver (async — DB-backed lookup) |
 
 ## Conventions
@@ -67,6 +69,20 @@ Vercel deploys on push to `master`. Build runs migrations and seed.
 
 - Production: https://swipejob.vercel.app
 - Repo: https://github.com/kazuuekiki/swipejob
+
+## Scraper feedback loop
+
+The scraper (`C:\GitProject\スクレイパー製作\`) auto-improves based on what real users like in the app.
+
+1. `npm run signals:export` queries the DB and writes `signals.json` (top industries, locations, salary bands, weighted keywords) to both the repo and the scraper directory.
+2. `python main.py --auto` in the scraper reads `signals.json`, picks a keyword weighted by user preference (e.g. "高卒 東京都" if Tokyo is dominant), then scrapes.
+3. `npm run csv:sync` copies the updated `collected.csv` back into the repo.
+4. `npx tsx prisma/seed.ts` upserts new companies (preserves existing favorites/applications).
+5. Commit + push deploys via Vercel.
+
+All five steps run in one shot via `npm run scrape:cycle` (`scripts/full-cycle.ps1`).
+
+The result: as students swipe more, the scraper gradually focuses on the kinds of companies they actually like — without any manual tuning.
 
 ## Validation plan (next 6–8 weeks)
 
